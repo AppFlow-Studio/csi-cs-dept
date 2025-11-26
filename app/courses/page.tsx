@@ -191,8 +191,8 @@ const FilterPill = ({ label, isActive, onClick }: { label: string, isActive: boo
     <button
         onClick={onClick}
         className={`px-4 py-2 rounded-full text-sm font-bold transition-all duration-200 whitespace-nowrap flex items-center gap-2 border ${isActive
-                ? 'bg-slate-900 text-white border-slate-900 shadow-sm shadow-slate-900/20'
-                : 'bg-white text-slate-600 border-slate-200 hover:border-slate-300 hover:bg-slate-50'
+            ? 'bg-slate-900 text-white border-slate-900 shadow-sm shadow-slate-900/20'
+            : 'bg-white text-slate-600 border-slate-200 hover:border-slate-300 hover:bg-slate-50'
             }`}
     >
         {isActive && <div className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />}
@@ -284,8 +284,8 @@ export default function CoursesPage() {
                                             key={filter}
                                             onClick={() => setMainFilter(filter as any)}
                                             className={`px-5 py-2 rounded-lg text-sm font-bold capitalize transition-all duration-300 ${mainFilter === filter
-                                                    ? 'bg-white text-slate-900 shadow-sm ring-1 ring-black/5'
-                                                    : 'text-slate-500 hover:text-slate-700 hover:bg-slate-200/50'
+                                                ? 'bg-white text-slate-900 shadow-sm ring-1 ring-black/5'
+                                                : 'text-slate-500 hover:text-slate-700 hover:bg-slate-200/50'
                                                 }`}
                                         >
                                             {filter}
@@ -296,7 +296,7 @@ export default function CoursesPage() {
 
                             {/* Search Bar */}
                             <div className="relative w-full lg:w-96 group">
-                                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-600 transition-colors">
+                                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-[#7abde8] transition-colors">
                                     <Search size={18} />
                                 </div>
                                 <input
@@ -304,7 +304,7 @@ export default function CoursesPage() {
                                     placeholder="Search by code or name..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="w-full pl-11 pr-10 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-all shadow-inner"
+                                    className="w-full pl-11 pr-10 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#7abde8]/20 focus:border-[#7abde8] transition-all shadow-inner"
                                 />
                                 {searchQuery && (
                                     <button
@@ -393,7 +393,7 @@ export default function CoursesPage() {
                         </p>
                         <button
                             onClick={() => { setSearchQuery(''); setSubFilter('all'); setMainFilter('all'); }}
-                            className="mt-6 text-blue-600 font-bold hover:underline"
+                            className="mt-6 text-[#7abde8] font-bold hover:underline"
                         >
                             Clear all filters
                         </button>

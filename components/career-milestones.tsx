@@ -83,7 +83,7 @@ export default function CareerMilestonesHero() {
     const currentData = timelineData.find(n => n.id === activeNode) || timelineData[0];
 
     return (
-        <section className="relative bg-white min-h-screen py-24 mt-24 overflow-hidden flex flex-col justify-center [mask-composite:intersect] [mask-image:linear-gradient(to_bottom,transparent,black_6rem,linear-gradient(to_left,transparent,black_6rem))]">
+        <section className="relative  min-h-screen py-24 mt-24 overflow-hidden flex flex-col justify-center [mask-composite:intersect] [mask-image:linear-gradient(to_bottom,transparent,black_6rem,linear-gradient(to_left,transparent,black_6rem))]">
 
             {/* ------------------------------------------------------- */}
             {/* SVG BACKGROUND LAYER                                    */}
@@ -219,7 +219,7 @@ export default function CareerMilestonesHero() {
                     </h4>
                     <h1 className="text-4xl md:text-5xl font-serif text-slate-900 ">
                         Navigate your <br />
-                        <span className="text-blue-600">Career Milestones</span>
+                        <span className="text-[#7abde8]">Career Milestones</span>
                     </h1>
 
                     {/* 
@@ -257,7 +257,7 @@ export default function CareerMilestonesHero() {
                                     )}
 
                                     {/* Label */}
-                                    <div className={`absolute top-8 left-1/2 -translate-x-1/2 text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all duration-300 ${isActive ? 'text-blue-600' : 'text-slate-400'
+                                    <div className={`absolute top-8 left-1/2 -translate-x-1/2 text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all duration-300 ${isActive ? 'text-[#7abde8]' : 'text-slate-400'
                                         }`}>
                                         {node.year}
                                     </div>
@@ -277,7 +277,7 @@ export default function CareerMilestonesHero() {
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: 20 }}
-                            className="p-4 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg inline-block mb-16 "
+                            className="p-4 bg-blue-50 border-l-4 border-[#7abde8] rounded-r-lg inline-block mb-16 "
                         >
                             <h3 className="font-bold text-blue-900 text-lg">{currentData.year}</h3>
                             <p className="text-blue-700 text-sm">{currentData.tagline}</p>
@@ -307,7 +307,7 @@ export default function CareerMilestonesHero() {
                                     transition={{ delay: idx * 0.1 }} // Stagger effect
                                     className="bg-slate-50 rounded-xl p-5 border border-slate-100 hover:shadow-md hover:border-blue-200 transition-all duration-300 group"
                                 >
-                                    <div className="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-500 mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shadow-sm">
+                                    <div className="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-500 mb-4 group-hover:bg-[#7abde8] group-hover:text-white transition-colors duration-300 shadow-sm">
                                         <item.icon size={20} />
                                     </div>
                                     <h3 className="font-bold text-slate-900 mb-2 text-sm">

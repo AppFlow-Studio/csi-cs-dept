@@ -44,7 +44,7 @@ const InfoCard = ({ title, badge, icon, image, delay }: CardProps) => {
 
             <div className="p-4 flex flex-col flex-grow relative">
                 {/* Floating Icon Badge */}
-                <div className="absolute -top-8 right-4 bg-white p-3 rounded-full shadow-md text-blue-600 group-hover:text-blue-800 transition-colors">
+                <div className="absolute -top-8 right-4 bg-white p-3 rounded-full shadow-md text-[#7abde8] group-hover:text-blue-800 transition-colors">
                     {icon}
                 </div>
 

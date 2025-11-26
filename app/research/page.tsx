@@ -156,7 +156,7 @@ export default function ResearchHero() {
                         </div>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl text-slate-900 mb-4 tracking-tight">
                             Innovation at <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7abde8] to-cyan-500">
                                 The Frontier
                             </span>
                         </h1>
@@ -217,7 +217,7 @@ const ResearchCard = ({ project }: { project: typeof researchProjects[0] }) => {
         >
             {/* Header: Icon & Tag */}
             <div className="flex justify-between items-start mb-2">
-                <div className="p-1.5 bg-blue-50 text-blue-600 rounded-lg">
+                <div className="p-1.5 bg-blue-50 text-[#7abde8] rounded-lg">
                     <project.icon size={16} />
                 </div>
                 <span className="text-[9px] font-bold uppercase tracking-wider bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full">
@@ -239,7 +239,7 @@ const ResearchCard = ({ project }: { project: typeof researchProjects[0] }) => {
             {/* Footer: Metadata */}
             <div className="mt-auto pt-2 border-t border-slate-50 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                    <div className="w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center text-blue-600 shrink-0">
+                    <div className="w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center text-[#7abde8] shrink-0">
                         <User size={10} />
                     </div>
                     <div className="flex flex-col">
@@ -250,7 +250,7 @@ const ResearchCard = ({ project }: { project: typeof researchProjects[0] }) => {
 
                 <a
                     href={project.link}
-                    className="p-1.5 rounded-full bg-slate-50 text-slate-400 hover:bg-blue-600 hover:text-white transition-all"
+                    className="p-1.5 rounded-full bg-slate-50 text-slate-400 hover:bg-[#7abde8] hover:text-white transition-all"
                     title="View Article"
                 >
                     <ExternalLink size={12} />

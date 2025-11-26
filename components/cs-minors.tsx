@@ -186,7 +186,7 @@ export default function MinorsAccordion() {
     const activeFeature = minors.find(f => f.id === activeId) || minors[0];
 
     return (
-        <section className="bg-white">
+        <section className=" mb-24">
             <div className="max-w-8xl mx-auto px-6">
 
                 {/* Section Header */}
@@ -196,7 +196,7 @@ export default function MinorsAccordion() {
                     viewport={{ once: true }}
                     className="mb-12"
                 >
-                    <span className="text-blue-600 font-bold tracking-widest uppercase text-xs mb-2 block">
+                    <span className="text-[#7abde8] font-bold tracking-widest uppercase text-xs mb-2 block">
                         Academic Minors
                     </span>
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
@@ -220,7 +220,7 @@ export default function MinorsAccordion() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.7 }}
-                    className="bg-slate-50 rounded-3xl p-4 md:p-6 shadow-sm border border-slate-200 flex flex-col lg:flex-row gap-6 min-h-[600px]"
+                    className="backdrop-blur-md rounded-3xl p-4 md:p-6 shadow-sm border border-slate-200 flex flex-col lg:flex-row gap-6 min-h-[600px]"
                 >
 
                     {/* LEFT SIDE: Accordion Controls */}
@@ -240,7 +240,7 @@ export default function MinorsAccordion() {
                                     {/* Header Area */}
                                     <div className="p-5 flex items-center gap-4">
 
-                                        <div className={`p-2.5 rounded-xl transition-colors duration-300 shrink-0 ${isActive ? 'bg-blue-600 text-white' : 'bg-slate-200 text-slate-500'
+                                        <div className={`p-2.5 rounded-xl transition-colors duration-300 shrink-0 ${isActive ? 'bg-[#7abde8] text-white' : 'bg-slate-200 text-slate-500'
                                             }`}>
                                             <minor.icon size={22} />
                                         </div>
@@ -256,7 +256,7 @@ export default function MinorsAccordion() {
                                         </div>
 
                                         <ChevronDown
-                                            className={`text-slate-400 transition-transform duration-300 ${isActive ? 'rotate-180 text-blue-600' : ''
+                                            className={`text-slate-400 transition-transform duration-300 ${isActive ? 'rotate-180 text-[#7abde8]' : ''
                                                 }`}
                                         />
                                     </div>
@@ -284,7 +284,7 @@ export default function MinorsAccordion() {
                                             </div>
 
                                             <div className="mt-4 pt-4 border-t border-slate-100 flex justify-end">
-                                                <button className="text-xs font-bold text-blue-600 flex items-center gap-1 hover:gap-2 transition-all">
+                                                <button className="text-xs font-bold text-[#7abde8] flex items-center gap-1 hover:gap-2 transition-all">
                                                     View Course Details <ArrowRight size={12} />
                                                 </button>
                                             </div>
@@ -295,7 +295,7 @@ export default function MinorsAccordion() {
                                     {isActive && (
                                         <motion.div
                                             layoutId="active-pill-minor"
-                                            className="absolute left-0 top-0 bottom-0 w-1.5 bg-blue-600"
+                                            className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#7abde8]"
                                         />
                                     )}
                                 </div>

@@ -2,18 +2,18 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  ShieldCheck, 
-  Smartphone, 
-  Gamepad2, 
-  BookOpen, 
-  Activity, 
-  Globe, 
-  Eye, 
-  Lock, 
-  Wifi, 
-  FileCode, 
-  ScanLine, 
+import {
+  ShieldCheck,
+  Smartphone,
+  Gamepad2,
+  BookOpen,
+  Activity,
+  Globe,
+  Eye,
+  Lock,
+  Wifi,
+  FileCode,
+  ScanLine,
   Cpu,
   ArrowUpRight
 } from 'lucide-react';
@@ -159,7 +159,7 @@ const BentoCard = ({ project, index }: { project: typeof projects[0], index: num
   }[project.color] || "bg-slate-50 hover:border-slate-300 text-slate-900";
 
   const iconColor = {
-    blue: "text-blue-600 bg-white",
+    blue: "text-[#7abde8] bg-white",
     slate: "text-slate-600 bg-white",
     purple: "text-purple-600 bg-white",
     emerald: "text-emerald-600 bg-white",
@@ -201,7 +201,7 @@ const BentoCard = ({ project, index }: { project: typeof projects[0], index: num
           {project.category}
         </span>
         <h3 className={cn(
-          "font-bold leading-tight mb-2", 
+          "font-bold leading-tight mb-2",
           project.size === 'lg' ? "text-2xl" : "text-lg"
         )}>
           {project.title}
@@ -225,10 +225,10 @@ export default function StudentResearch() {
   return (
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        
+
         {/* Section Header */}
         <div className="mb-16 max-w-3xl">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -250,7 +250,7 @@ export default function StudentResearch() {
         </div>
 
         {/* Footer CTA */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

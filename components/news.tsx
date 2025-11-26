@@ -137,7 +137,7 @@ const NewsCard = ({ item }: { item: NewsItem }) => {
                     alt={item.title}
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute top-2 left-2 bg-white/90 backdrop-blur-sm px-2 py-1 text-xs font-bold uppercase tracking-wide text-blue-600 rounded-sm">
+                <div className="absolute top-2 left-2 bg-white/90 backdrop-blur-sm px-2 py-1 text-xs font-bold uppercase tracking-wide text-[#7abde8] rounded-sm">
                     {item.category}
                 </div>
             </div>
@@ -160,7 +160,7 @@ const NewsCard = ({ item }: { item: NewsItem }) => {
                         <Calendar size={14} className="mr-1" />
                         {item.date}
                     </div>
-                    <div className="bg-gray-50 p-1 rounded-full group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <div className="bg-gray-50 p-1 rounded-full group-hover:bg-[#7abde8] group-hover:text-white transition-colors">
                         <ArrowRight size={16} />
                     </div>
                 </div>
@@ -231,8 +231,8 @@ export default function DepartmentNewsSection() {
                                 key={year}
                                 onClick={() => setActiveYear(year)}
                                 className={`text-lg font-bold whitespace-nowrap pb-2 transition-all relative ${activeYear === year
-                                        ? "text-black"
-                                        : "text-gray-500 hover:text-gray-800"
+                                    ? "text-black"
+                                    : "text-gray-500 hover:text-gray-800"
                                     }`}
                             >
                                 {year}
@@ -268,7 +268,7 @@ export default function DepartmentNewsSection() {
 
                     {/* "Show all" Link (Udemy style) */}
                     <div className="mt-8">
-                        <a href="#" className="inline-flex items-center text-blue-600 font-bold border border-blue-600 px-4 py-2 hover:bg-blue-50 transition-colors">
+                        <a href="#" className="inline-flex items-center text-[#7abde8] font-bold border border-[#7abde8] px-4 py-2 hover:bg-blue-50 transition-colors">
                             View all archives <ArrowRight size={16} className="ml-2" />
                         </a>
                     </div>

@@ -2,12 +2,12 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  User, 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Briefcase, 
+import {
+  User,
+  Mail,
+  Phone,
+  MapPin,
+  Briefcase,
   Users,
   Award
 } from 'lucide-react';
@@ -93,14 +93,14 @@ const StaffCard = ({ member, index }: { member: any, index: number }) => (
       </div>
       <div>
         <h3 className="font-bold text-lg text-slate-900">{member.name}</h3>
-        <p className="text-sm text-blue-600 font-medium">{member.title}</p>
+        <p className="text-sm text-[#7abde8] font-medium">{member.title}</p>
       </div>
     </div>
-    
+
     <div className="p-6 space-y-3 text-sm text-slate-600">
       <div className="flex items-center gap-3">
         <Mail size={16} className="text-slate-400" />
-        <a href={`mailto:${member.email}`} className="hover:text-blue-600 transition-colors truncate">
+        <a href={`mailto:${member.email}`} className="hover:text-[#7abde8] transition-colors truncate">
           {member.email}
         </a>
       </div>
@@ -118,13 +118,13 @@ const StaffCard = ({ member, index }: { member: any, index: number }) => (
 
 const NameListSection = ({ title, names, icon: Icon }: { title: string, names: string[], icon: any }) => (
   <div className="mb-20">
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, x: -20 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       className="flex items-center gap-3 mb-8"
     >
-      <div className="p-2 bg-blue-100 text-blue-600 rounded-lg">
+      <div className="p-2 bg-blue-100 text-[#7abde8] rounded-lg">
         <Icon size={24} />
       </div>
       <h3 className="text-2xl font-bold text-slate-900">{title}</h3>
@@ -154,9 +154,9 @@ export default function DepartmentStaff() {
   return (
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        
+
         {/* Page Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -172,27 +172,27 @@ export default function DepartmentStaff() {
 
         {/* Emeritus & Adjuncts Lists */}
         <div className="border-b border-slate-100 mb-20">
-          <NameListSection 
-            title="Emeritus Faculty" 
-            names={emeritusData} 
-            icon={Award} 
+          <NameListSection
+            title="Emeritus Faculty"
+            names={emeritusData}
+            icon={Award}
           />
-          <NameListSection 
-            title="Adjunct Faculty" 
-            names={adjunctsData} 
-            icon={Users} 
+          <NameListSection
+            title="Adjunct Faculty"
+            names={adjunctsData}
+            icon={Users}
           />
         </div>
 
         {/* Staff Cards Section */}
         <div>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="flex items-center gap-3 mb-10"
           >
-            <div className="p-2 bg-blue-100 text-blue-600 rounded-lg">
+            <div className="p-2 bg-blue-100 text-[#7abde8] rounded-lg">
               <Briefcase size={24} />
             </div>
             <h3 className="text-2xl font-bold text-slate-900">Office & Technical Staff</h3>
@@ -203,7 +203,7 @@ export default function DepartmentStaff() {
             {officeStaff.map((staff, idx) => (
               <StaffCard key={staff.name} member={staff} index={idx} />
             ))}
-            
+
             {/* Technical Staff */}
             {technicalStaff.map((staff, idx) => (
               <StaffCard key={staff.name} member={staff} index={idx + officeStaff.length} />

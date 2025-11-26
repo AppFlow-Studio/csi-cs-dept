@@ -60,7 +60,7 @@ const specializations = [
             { label: "Data Science", value: "Analytics" }
         ],
         image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2670&auto=format&fit=crop",
-        color: "text-blue-600"
+        color: "text-[#7abde8]"
     },
     {
         id: 2,
@@ -122,7 +122,7 @@ const DegreeListSection = () => {
                         <p className="text-gray-600 mb-4 leading-relaxed">
                             {degreeCategories.featured.description}
                         </p>
-                        <a href="#" className="inline-flex items-center text-blue-600 font-bold hover:underline">
+                        <a href="#" className="inline-flex items-center text-[#7abde8] font-bold hover:underline">
                             {degreeCategories.featured.linkText} <ChevronRight size={16} />
                         </a>
 
@@ -149,7 +149,7 @@ const DegreeListSection = () => {
                                 <ul className="space-y-4">
                                     {col.items.map((item, i) => (
                                         <li key={i} className="group cursor-pointer">
-                                            <div className="flex items-center justify-between text-blue-600 font-medium group-hover:text-blue-800 transition-colors">
+                                            <div className="flex items-center justify-between text-[#7abde8] font-medium group-hover:text-blue-800 transition-colors">
                                                 <span>{item}</span>
                                                 <ChevronRight size={14} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
                                             </div>
@@ -191,7 +191,7 @@ const SpotlightCarousel = () => {
                     whileInView={{ opacity: 1 }}
                     className="mb-8 flex items-center gap-3"
                 >
-                    <div className="h-8 w-1 bg-blue-600"></div>
+                    <div className="h-8 w-1 bg-[#7abde8]"></div>
                     <h2 className="text-2xl text-gray-500 font-medium">Department Spotlight</h2>
                 </motion.div>
 
@@ -268,7 +268,7 @@ const SpotlightCarousel = () => {
                 <div className="mt-8 flex items-center gap-4">
                     <button
                         onClick={prevSlide}
-                        className="w-12 h-12 rounded-full border border-gray-300 bg-white flex items-center justify-center hover:bg-blue-50 hover:border-blue-600 transition-all"
+                        className="w-12 h-12 rounded-full border border-gray-300 bg-white flex items-center justify-center hover:bg-blue-50 hover:border-[#7abde8] transition-all"
                     >
                         <ChevronLeft size={24} />
                     </button>
@@ -278,7 +278,7 @@ const SpotlightCarousel = () => {
                             <button
                                 key={idx}
                                 onClick={() => setCurrentIndex(idx)}
-                                className={`w-3 h-3 rounded-full transition-all ${idx === currentIndex ? 'bg-blue-600 w-8' : 'bg-gray-300 hover:bg-gray-400'
+                                className={`w-3 h-3 rounded-full transition-all ${idx === currentIndex ? 'bg-[#7abde8] w-8' : 'bg-gray-300 hover:bg-gray-400'
                                     }`}
                             />
                         ))}
@@ -286,7 +286,7 @@ const SpotlightCarousel = () => {
 
                     <button
                         onClick={nextSlide}
-                        className="w-12 h-12 rounded-full border border-gray-300 bg-white flex items-center justify-center hover:bg-blue-50 hover:border-blue-600 transition-all"
+                        className="w-12 h-12 rounded-full border border-gray-300 bg-white flex items-center justify-center hover:bg-blue-50 hover:border-[#7abde8] transition-all"
                     >
                         <ChevronRight size={24} />
                     </button>

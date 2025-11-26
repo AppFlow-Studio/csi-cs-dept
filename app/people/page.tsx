@@ -174,7 +174,7 @@ const FacultyCard = ({ member, index }: { member: typeof faculty[0], index: numb
 
             {/* Hover Action */}
             <div className="absolute bottom-4 right-4 translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                <div className="bg-white text-blue-600 p-2 rounded-full shadow-lg">
+                <div className="bg-white text-[#7abde8] p-2 rounded-full shadow-lg">
                     <ArrowRight size={20} />
                 </div>
             </div>
@@ -196,9 +196,9 @@ const FacultyCard = ({ member, index }: { member: typeof faculty[0], index: numb
             <div className="space-y-3 text-sm text-slate-500 mt-auto">
                 <a
                     href={`mailto:${member.email}`}
-                    className="flex items-center gap-3 hover:text-blue-600 transition-colors group/link"
+                    className="flex items-center gap-3 hover:text-[#7abde8] transition-colors group/link"
                 >
-                    <div className="p-1.5 rounded-md bg-slate-50 text-slate-400 group-hover/link:bg-blue-100 group-hover/link:text-blue-600 transition-colors">
+                    <div className="p-1.5 rounded-md bg-slate-50 text-slate-400 group-hover/link:bg-blue-100 group-hover/link:text-[#7abde8] transition-colors">
                         <Mail size={14} />
                     </div>
                     <span className="truncate">{member.email}</span>

@@ -23,9 +23,9 @@ const DepartmentHeadSection = () => {
   return (
     <section className="py-20 bg-[#f0f4f8] text-slate-800 overflow-hidden">
       <div className="max-w-8xl mx-auto ">
-        
+
         {/* Section Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -35,26 +35,26 @@ const DepartmentHeadSection = () => {
             Department Leadership
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            Meet the faculty guiding the vision of Computer Science at CSI. 
-            Our leadership is dedicated to fostering an environment of research, 
+            Meet the faculty guiding the vision of Computer Science at CSI.
+            Our leadership is dedicated to fostering an environment of research,
             innovation, and student success.
           </p>
         </motion.div>
 
         {/* Main Profile Card */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className=" border border-t border-gray-200 flex flex-col lg:flex-row min-h-[600px]"
         >
-          
+
           {/* LEFT COLUMN: Text Info */}
           <div className="lg:w-1/2 relative p-8 md:p-12 flex flex-col justify-between border border-b-0 border-l-0 border-t-0 lg:border-r border-dashed border-gray-300">
-            
+
             <div>
-              <motion.h3 
+              <motion.h3
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
@@ -62,16 +62,16 @@ const DepartmentHeadSection = () => {
               >
                 {profile.name}
               </motion.h3>
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                className="text-sm font-bold text-blue-600 tracking-widest uppercase mb-8"
+                className="text-sm font-bold text-[#7abde8] tracking-widest uppercase mb-8"
               >
                 {profile.title}
               </motion.p>
 
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
@@ -85,7 +85,7 @@ const DepartmentHeadSection = () => {
             </div>
 
             {/* Contact Info Area (Bottom of Left Col) */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
@@ -93,22 +93,22 @@ const DepartmentHeadSection = () => {
             >
               <h4 className="font-bold text-gray-900 mb-4">Contact Information</h4>
               <div className="space-y-3 text-sm text-gray-600">
-                
+
                 <div className="flex items-start gap-3">
-                  <MapPin className="text-blue-600 shrink-0 mt-1" size={18} />
+                  <MapPin className="text-[#7abde8] shrink-0 mt-1" size={18} />
                   <span>{profile.contact.address}</span>
                 </div>
 
                 <div className="flex flex-wrap gap-6">
-                    <div className="flex items-center gap-3">
-                    <Phone className="text-blue-600 shrink-0" size={18} />
+                  <div className="flex items-center gap-3">
+                    <Phone className="text-[#7abde8] shrink-0" size={18} />
                     <span>Phone: {profile.contact.phone}</span>
-                    </div>
+                  </div>
 
-                    <div className="flex items-center gap-3">
-                    <Printer className="text-blue-600 shrink-0" size={18} />
+                  <div className="flex items-center gap-3">
+                    <Printer className="text-[#7abde8] shrink-0" size={18} />
                     <span>Fax: {profile.contact.fax}</span>
-                    </div>
+                  </div>
                 </div>
 
               </div>
@@ -117,22 +117,22 @@ const DepartmentHeadSection = () => {
 
           {/* RIGHT COLUMN: Image */}
           <div className="lg:w-1/2 relative bg-gray-100 overflow-hidden ">
-             {/* Grayscale Filter + Image */}
-            <motion.div 
-                initial={{ scale: 1.1, filter: "grayscale(100%)" }}
-                whileInView={{ scale: 1, filter: "grayscale(100%)" }}
-                whileHover={{ filter: "grayscale(0%)" }} // Cool interactive effect: color on hover
-                transition={{ duration: 0.8 }}
-                className="w-full h-full relative"
+            {/* Grayscale Filter + Image */}
+            <motion.div
+              initial={{ scale: 1.1, filter: "grayscale(100%)" }}
+              whileInView={{ scale: 1, filter: "grayscale(100%)" }}
+              whileHover={{ filter: "grayscale(0%)" }} // Cool interactive effect: color on hover
+              transition={{ duration: 0.8 }}
+              className="w-full h-full relative"
             >
-                {/* <img 
+              {/* <img 
                   src={profile.image} 
                   alt={profile.name}
                   className="absolute inset-0 w-full h-full object-cover object-top"
                 /> */}
-                
-                {/* Gradient Overlay for smooth fade at bottom (optional aesthetic touch) */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+
+              {/* Gradient Overlay for smooth fade at bottom (optional aesthetic touch) */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
             </motion.div>
           </div>
 
