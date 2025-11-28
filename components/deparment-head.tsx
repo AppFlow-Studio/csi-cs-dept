@@ -3,13 +3,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Phone, MapPin, Printer, Mail } from 'lucide-react';
+import Image from 'next/image';
 
 const DepartmentHeadSection = () => {
   // Data extracted from Image 2 and enhanced for the layout
   const profile = {
     name: "Professor Shuqun Zhang",
     title: "Chairperson of the Department",
-    image: "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=2670&auto=format&fit=crop", // Professional placeholder
+    image: "/shuquan-zhang.png", // Professional placeholder
     bio: "Professor Zhang leads the Department of Computer Science with a focus on academic excellence and research innovation. His leadership ensures that the curriculum remains rigorous and relevant to the evolving tech landscape.",
     quote: "Our mission is to provide a broad-based background in computer software, systems, and mathematics, preparing students not just for their first job, but for a lifelong career in technology.",
     contact: {
@@ -47,7 +48,7 @@ const DepartmentHeadSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className=" border border-t border-gray-200 flex flex-col lg:flex-row min-h-[600px]"
+          className=" border border-t border-gray-200 flex flex-col lg:flex-row min-h-[700px]"
         >
 
           {/* LEFT COLUMN: Text Info */}
@@ -119,17 +120,18 @@ const DepartmentHeadSection = () => {
           <div className="lg:w-1/2 relative bg-gray-100 overflow-hidden ">
             {/* Grayscale Filter + Image */}
             <motion.div
-              initial={{ scale: 1.1, filter: "grayscale(100%)" }}
-              whileInView={{ scale: 1, filter: "grayscale(100%)" }}
-              whileHover={{ filter: "grayscale(0%)" }} // Cool interactive effect: color on hover
+              initial={{ scale: 1.1,  }}
+              whileInView={{ scale: 1,  }}
+              whileHover={{  }} // Cool interactive effect: color on hover
               transition={{ duration: 0.8 }}
               className="w-full h-full relative"
             >
-              {/* <img 
+              <Image 
                   src={profile.image} 
                   alt={profile.name}
-                  className="absolute inset-0 w-full h-full object-cover object-top"
-                /> */}
+                  className=" inset-0 w-full h-full object-cover object-center "
+                  fill
+                />
 
               {/* Gradient Overlay for smooth fade at bottom (optional aesthetic touch) */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>

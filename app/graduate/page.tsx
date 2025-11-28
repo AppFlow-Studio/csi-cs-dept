@@ -163,11 +163,15 @@ export default function GraduatePage() {
             </section>
             <GraduateAdvisement />
 
-            <MSProgramSection />
+            <div id="ms-computer-science">
+                <MSProgramSection />
+            </div>
             <GraduateSpecializations />
 
             <DoubleCountingPolicy />
-            <PhDProgramSection />
+            <div id="phd-computer-science">
+                <PhDProgramSection />
+            </div>
         </main>
     );
 }

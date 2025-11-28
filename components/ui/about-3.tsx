@@ -180,50 +180,7 @@ export const About3 = ({
           </div>
         </div>
 
-        <motion.div
-          className="py-32"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={viewportOptions}
-          transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
-        >
-          <motion.p
-            className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={viewportOptions}
-            transition={{ duration: 0.5, ease: "easeOut" as const }}
-          >
-            {companiesTitle}
-          </motion.p>
-          {/* <motion.div
-            className="mt-8 flex flex-wrap justify-center gap-8"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={viewportOptions}
-            transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
-          >
-            {companies.map((company, idx) => (
-              <motion.div
-                className="flex items-center gap-3"
-                key={company.src + idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={viewportOptions}
-                transition={{ duration: 0.5, ease: "easeOut" as const, delay: idx * 0.1 }}
-                whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
-              >
-                <img
-                  src={company.src}
-                  alt={company.alt}
-                  className="h-6 w-auto md:h-8"
-                />
-              </motion.div>
-            ))}
-          </motion.div> */}
-          <CompaniesMarquee />
-        </motion.div>
-
+        <div className="py-10" />
         <motion.div
           className="relative overflow-hidden rounded-xl bg-muted p-10 md:p-16"
           initial={{ opacity: 0, y: 30 }}
@@ -232,51 +189,67 @@ export const About3 = ({
           transition={{ duration: 0.8, ease: "easeOut" as const }}
         >
           <motion.div
-            className="flex flex-col gap-4 text-center md:text-left"
+            className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h2 className="text-4xl font-semibold">{achievementsTitle}</h2>
-            <p className="max-w-screen-sm text-muted-foreground">
-              {achievementsDescription}
-            </p>
-          </motion.div>
-          <motion.div
-            className="mt-10 flex flex-wrap justify-between gap-10 text-center"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={viewportOptions}
-            transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
-          >
-            {achievements.map((item, idx) => (
+            <div className="text-start md:w-1/2">
+              <h2 className="text-4xl font-semibold mb-4">{achievementsTitle}</h2>
+              <p className="text-lg text-muted-foreground mb-6">
+                {achievementsDescription}
+              </p>
               <motion.div
-                className="flex flex-col gap-4"
-                key={item.label + idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                className="flex flex-wrap gap-6 md:gap-8"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={viewportOptions}
-                transition={{ duration: 0.5, ease: "easeOut" as const, delay: idx * 0.1 }}
-                whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                transition={{ staggerChildren: 0.1, delayChildren: 0.3 }}
               >
-                <p>{item.label}</p>
-                <motion.span
-                  className="text-4xl font-semibold md:text-5xl"
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={viewportOptions}
-                  transition={{
-                    duration: 0.5,
-                    delay: idx * 0.1 + 0.2,
-                    type: "spring",
-                    stiffness: 100,
-                  }}
-                >
-                  {item.value}
-                </motion.span>
+                {achievements.map((item, idx) => (
+                  <motion.div
+                    className="flex flex-col gap-2"
+                    key={item.label + idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={viewportOptions}
+                    transition={{ duration: 0.5, ease: "easeOut" as const, delay: idx * 0.1 }}
+                    whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                  >
+                    <p className="text-sm text-muted-foreground">{item.label}</p>
+                    <motion.span
+                      className="text-3xl font-semibold md:text-4xl"
+                      initial={{ opacity: 0, scale: 0.5 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={viewportOptions}
+                      transition={{
+                        duration: 0.5,
+                        delay: idx * 0.1 + 0.3,
+                        type: "spring",
+                        stiffness: 100,
+                      }}
+                    >
+                      {item.value}
+                    </motion.span>
+                  </motion.div>
+                ))}
               </motion.div>
-            ))}
+            </div>
+            <div className="md:w-1/2 flex items-center justify-center">
+              <div className="w-full">
+                <motion.p
+                  className="text-center text-sm font-medium text-muted-foreground mb-4"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                >
+                  Where our graduates build their careers
+                </motion.p>
+                <CompaniesMarquee />
+              </div>
+            </div>
           </motion.div>
           <div className="pointer-events-none absolute -top-1 right-1 z-10 hidden h-full w-full bg-[linear-gradient(to_right,hsl(var(--muted-foreground))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--muted-foreground))_1px,transparent_1px)] bg-[size:80px_80px] opacity-15 [mask-image:linear-gradient(to_bottom_right,#000,transparent,transparent)] md:block"></div>
         </motion.div>

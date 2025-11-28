@@ -22,6 +22,7 @@ import {
     Cloud
 } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
+import Link from 'next/link';
 
 // --- Data: Timeline Milestones ---
 const timelineData = [
@@ -31,11 +32,11 @@ const timelineData = [
         tagline: 'Discovery & Foundations',
         xPosition: '0%', // Starts at far left
         gridItems: [
-            { icon: Briefcase, title: "Career Center", desc: "Schedule first meeting with a counselor." },
-            { icon: FileText, title: "Resume V1", desc: "Draft resume focusing on coursework." },
-            { icon: Users, title: "Join Clubs", desc: "Join ACM or WiCS for community." },
+            { icon: Briefcase, title: "Career Center", desc: "Schedule first meeting with a counselor.", href: "https://www.csi.cuny.edu/campus-life/student-services/center-career-and-professional-development" },
+            { icon: FileText, title: "Resume V1", desc: "Draft resume focusing on coursework.", href: "https://www.csi.cuny.edu/sites/default/files/pdf/schoolofbusiness/ResumeTemplate.pdf" },
+            { icon: Users, title: "Join Clubs", desc: "Join ACM or WiCS for community.", href: "https://csi.campuslabs.com/engage/organizations?query=computer%20science" },
             { icon: Search, title: "Explore Majors", desc: "Decide between CS and ISI tracks." },
-            { icon: Code2, title: "Intro Python", desc: "Master syntax in CSC 126." }
+            { icon: Code2, title: "Intro To Computer Science", desc: "Master syntax in CSC 126.", href: 'https://csi-undergraduate.catalog.cuny.edu/courses/0626561' }
         ]
     },
     {
@@ -44,11 +45,11 @@ const timelineData = [
         tagline: 'Building & Exploring',
         xPosition: '25%',
         gridItems: [
-            { icon: Github, title: "Git Basics", desc: "Push your first class project to GitHub." },
-            { icon: Terminal, title: "Side Projects", desc: "Build a simple calculator or app." },
-            { icon: PenTool, title: "Hackathons", desc: "Participate in CUNY Hackathons." },
-            { icon: Linkedin, title: "LinkedIn", desc: "Create profile and connect with alumni." },
-            { icon: Server, title: "Data Structs", desc: "Focus heavily on CSC 326." }
+            { icon: Github, title: "Git Basics", desc: "Push your first class project to GitHub.", href: "https://www.csi.cuny.edu/campus-life/student-services/center-career-and-professional-development" },
+            { icon: Terminal, title: "Side Projects", desc: "Build a simple calculator or app.", href: "https://learn.microsoft.com/en-us/cpp/get-started/tutorial-console-cpp?view=msvc-170" },
+            { icon: PenTool, title: "Hackathons", desc: "Participate in CUNY Hackathons.", href: "https://hackknight.org/" },
+            { icon: Linkedin, title: "LinkedIn", desc: "Create profile and connect with alumni.", href: "https://www.linkedin.com/" },
+            { icon: Server, title: "Data Structs", desc: "Focus heavily on CSC 326.", href: 'https://csi-undergraduate.catalog.cuny.edu/courses/0626831' }
         ]
     },
     {
@@ -57,11 +58,11 @@ const timelineData = [
         tagline: 'Professionalization',
         xPosition: '50%',
         gridItems: [
-            { icon: GraduationCap, title: "CUNY Tech Prep", desc: "Apply for full-stack training." },
-            { icon: Briefcase, title: "Internships", desc: "Apply to 50+ summer positions." },
-            { icon: Coffee, title: "Networking", desc: "Attend CUNY Tech Meetups." },
-            { icon: Cpu, title: "Research", desc: "Join an NSF-funded research lab." },
-            { icon: Globe, title: "System Design", desc: "Learn scale for advanced interviews." }
+            { icon: GraduationCap, title: "CUNY Tech Prep", desc: "Apply for full-stack training.", href: "https://cunytechprep.org/" },
+            { icon: Briefcase, title: "Internships", desc: "Apply to 50+ summer positions.", href: "https://www.cuny.edu/employment/student-jobs/internships/cuny-internship-programs/" },
+            { icon: Coffee, title: "Networking", desc: "Attend CUNY Tech Meetups.", href: 'https://www.cuny.edu/about/administration/offices/ocip/students/cuny-tech-consortium/working-groups/' },
+            { icon: Cpu, title: "Research", desc: "Join an NSF-funded research lab.", href: 'https://www.cuny.edu/financial-aid/scholarships/prestigious-scholarships/undergraduate-research-opportunities/' },
+            { icon: Globe, title: "System Design", desc: "Learn scale for advanced interviews.", href: 'https://sysdine.dev/' }
         ]
     }
 ];
@@ -75,7 +76,7 @@ const jobNodes = [
     { id: 4, role: "UX Engineer", stack: "Figma, CSS, Accessibility", salary: "$105k+", color: "#8b5cf6", r: 358, deg: 180, icon: Layout }, // Purple - Inner circle, left
 ];
 
-export default function CareerMilestonesHero() {
+export default function CareerMilestones() {
     const [activeNode, setActiveNode] = useState(timelineData[0].id);
     const [hoveredJob, setHoveredJob] = useState<number | null>(null);
 
@@ -300,23 +301,25 @@ export default function CareerMilestonesHero() {
                             className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6"
                         >
                             {currentData.gridItems.map((item, idx) => (
-                                <motion.div
-                                    key={idx}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: idx * 0.1 }} // Stagger effect
-                                    className="bg-slate-50 rounded-xl p-5 border border-slate-100 hover:shadow-md hover:border-blue-200 transition-all duration-300 group"
-                                >
-                                    <div className="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-500 mb-4 group-hover:bg-[#7abde8] group-hover:text-white transition-colors duration-300 shadow-sm">
-                                        <item.icon size={20} />
-                                    </div>
-                                    <h3 className="font-bold text-slate-900 mb-2 text-sm">
-                                        {item.title}
-                                    </h3>
-                                    <p className="text-xs text-slate-500 leading-relaxed">
-                                        {item.desc}
-                                    </p>
-                                </motion.div>
+                                <Link href={item.href || '#'} target="_blank">
+                                    <motion.div
+                                        key={idx}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: idx * 0.1 }} // Stagger effect
+                                        className="bg-slate-50 rounded-xl h-full p-5 border border-slate-100 hover:shadow-md hover:border-blue-200 transition-all duration-300 group"
+                                    >
+                                        <div className="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-500 mb-4 group-hover:bg-[#7abde8] group-hover:text-white transition-colors duration-300 shadow-sm">
+                                            <item.icon size={20} />
+                                        </div>
+                                        <h3 className="font-bold text-slate-900 mb-2 text-sm">
+                                            {item.title}
+                                        </h3>
+                                        <p className="text-xs text-slate-500 leading-relaxed">
+                                            {item.desc}
+                                        </p>
+                                    </motion.div>
+                                </Link>
                             ))}
                         </motion.div>
                     </AnimatePresence>

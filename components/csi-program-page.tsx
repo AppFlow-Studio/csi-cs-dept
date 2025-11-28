@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 import {
     ChevronRight,
     ChevronLeft,
@@ -94,6 +95,21 @@ const specializations = [
 
 // --- Components ---
 
+// Helper function to get the href for each degree
+const getDegreeHref = (degreeName: string): string => {
+    const hrefMap: Record<string, string> = {
+        'AAS in Computer Technology': '/undergraduate#aas-computer-technology',
+        'BS in Computer Science': '/undergraduate#bs-computer-science',
+        'BS in CS-Mathematics': '/undergraduate#additional-degrees',
+        'BS in Info Systems & Informatics': '/undergraduate#bs-information-systems-and-informatics',
+        'M.S. in Computer Science': '/graduate#ms-computer-science',
+        'Ph.D. in Computer Science': '/graduate#phd-computer-science',
+        'Computer Science Minor': '/undergraduate#minors-certificates',
+        'Post-Baccalaureate Certificate': '/undergraduate#minors-certificates',
+    };
+    return hrefMap[degreeName] || '#';
+};
+
 const DegreeListSection = () => {
     return (
         <section className="py-12">
@@ -122,9 +138,9 @@ const DegreeListSection = () => {
                         <p className="text-gray-600 mb-4 leading-relaxed">
                             {degreeCategories.featured.description}
                         </p>
-                        <a href="#" className="inline-flex items-center text-[#7abde8] font-bold hover:underline">
+                        <Link href="/undergraduate" className="inline-flex items-center text-[#7abde8] font-bold hover:underline">
                             {degreeCategories.featured.linkText} <ChevronRight size={16} />
-                        </a>
+                        </Link>
 
                         <div className="mt-8 p-4 bg-blue-50 rounded-lg border border-blue-100">
                             <div className="flex items-center gap-2 text-blue-800 font-semibold mb-2">
@@ -147,17 +163,23 @@ const DegreeListSection = () => {
                             >
                                 <h4 className="font-bold text-lg text-gray-900 mb-4">{col.header}</h4>
                                 <ul className="space-y-4">
-                                    {col.items.map((item, i) => (
-                                        <li key={i} className="group cursor-pointer">
-                                            <div className="flex items-center justify-between text-[#7abde8] font-medium group-hover:text-blue-800 transition-colors">
-                                                <span>{item}</span>
-                                                <ChevronRight size={14} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
-                                            </div>
-                                            <div className="text-xs text-gray-400 mt-1">
-                                                {Math.floor(Math.random() * 10000) + 100} students enrolled
-                                            </div>
-                                        </li>
-                                    ))}
+                                    {col.items.map((item, i) => {
+                                        const href = getDegreeHref(item);
+                                        return (
+                                            <li key={i} className="group">
+                                                <Link
+                                                    href={href}
+                                                    className="flex items-center justify-between text-[#7abde8] font-medium group-hover:text-blue-800 transition-colors cursor-pointer"
+                                                >
+                                                    <span>{item}</span>
+                                                    <ChevronRight size={14} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
+                                                </Link>
+                                                {/* <div className="text-xs text-gray-400 mt-1">
+                                                    {Math.floor(Math.random() * 10000) + 100} students enrolled
+                                                </div> */}
+                                            </li>
+                                        );
+                                    })}
                                 </ul>
                             </motion.div>
                         ))}
@@ -237,9 +259,9 @@ const SpotlightCarousel = () => {
                                     ))}
                                 </div>
 
-                                <button className="bg-[#2d2f31] hover:bg-black text-white font-bold py-3 px-6 flex items-center gap-2 transition-colors w-fit rounded-xl">
+                                {/* <button className="bg-[#2d2f31] hover:bg-black text-white font-bold py-3 px-6 flex items-center gap-2 transition-colors w-fit rounded-xl">
                                     View Curriculum <ArrowRight size={18} />
-                                </button>
+                                </button> */}
                             </motion.div>
                         </AnimatePresence>
                     </div>

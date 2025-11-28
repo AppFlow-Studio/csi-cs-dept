@@ -225,7 +225,7 @@ const FacultyCard = ({ member, index }: { member: typeof faculty[0], index: numb
 export default function FacultyDirectory() {
     return (
         <main className='max-w-8xl mx-auto'>
-            <section className="bg-slate-50 py-24 min-h-screen">
+            <section id="professors" className="bg-slate-50 py-24 min-h-screen">
                 <div className="max-w-7xl mx-auto px-6">
 
                     {/* Header */}

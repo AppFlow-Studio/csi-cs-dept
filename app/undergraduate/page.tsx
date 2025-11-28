@@ -18,7 +18,8 @@ import {
     Lock,
     ShieldCheck,
     Laptop,
-    Plus
+    Plus,
+    GraduationCap
 } from 'lucide-react';
 import { FloatingIconsHero } from '@/components/ui/floating-icons-hero-section';
 import FloatingIconsHeroDemo from '@/components/floating-icons';
@@ -26,14 +27,14 @@ import { Icon } from '@/components/ui/floating-icons-hero-section';
 import { demoIcons } from '@/components/floating-icons';
 import NotchTwo from '@/components/notch-two';
 import ResourcesAccordion from '@/components/resouces-accordion';
-import DegreePathHero2 from './test';
-import AASProgramSection, { AdditionalDegreesPage, BSComputerScienceSection } from '@/components/program-cards';
+import AASProgramSection, { BSComputerScienceSection, BSInformaticsSection, BSMathematicsSection } from '@/components/program-cards';
 import SpecializationsAccordion from '@/components/specializations-accordion';
 import CareerMilestones from '@/components/career-milestones';
 import CareerMilestonesHero from '@/components/career-milestones';
 import MinorsAccordion from '@/components/cs-minors';
 import DoubleCountingPolicy from '@/components/double-counting-policy';
 import ABETAccreditation from '@/components/abet-accreditation';
+import Link from 'next/link';
 // --- Floating Icon Component ---
 // Accepts top/left/right props to position specifically in an arc
 const FloatingIcon = ({ icon: Icon, top, left, right, delay, color }: any) => (
@@ -143,7 +144,7 @@ export default function DegreePathHero() {
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="max-w-xl"
+                        className="max-w-xl z-20"
                     >
                         {/* Pill Badge */}
                         <div className="inline-flex items-center gap-2 bg-slate-50 border border-slate-200 text-slate-700 text-xs font-semibold px-4 py-1.5 rounded-full mb-8 cursor-pointer hover:bg-white hover:border-blue-300 transition-colors group">
@@ -165,13 +166,13 @@ export default function DegreePathHero() {
 
                         {/* Buttons */}
                         <div className="flex flex-col sm:flex-row gap-4">
-                            <button className="px-8 py-4 bg-[#0f172a] text-white text-sm font-bold tracking-wide uppercase rounded-md hover:bg-blue-800 transition-all shadow-lg hover:shadow-xl">
+                            {/* <button className="px-8 py-4 bg-[#0f172a] text-white text-sm font-bold tracking-wide uppercase rounded-md hover:bg-blue-800 transition-all shadow-lg hover:shadow-xl">
                                 Apply to Program
-                            </button>
-                            <button className="px-8 py-4 bg-white text-slate-700 border border-slate-300 text-sm font-bold tracking-wide uppercase rounded-md hover:bg-slate-50 transition-colors flex items-center justify-center gap-2">
+                            </button> */}
+                            <Link href='/courses' className="px-8 py-4 bg-white text-slate-700 border border-slate-300 text-sm font-bold tracking-wide uppercase rounded-md hover:bg-slate-50 transition-colors flex items-center justify-center gap-2 hover:cursor-pointer">
                                 <BookOpen size={18} />
                                 Academic Catalog
-                            </button>
+                            </Link>
                         </div>
 
                         <div className="mt-12 pt-8 border-t border-slate-100 flex items-center gap-8 text-xs font-semibold text-slate-400 uppercase tracking-widest">
@@ -367,13 +368,51 @@ export default function DegreePathHero() {
                 <div className="relative z-10">
                     <ResourcesAccordion />
 
-                    <AASProgramSection />
-                    <BSComputerScienceSection />
+                    <div id="aas-computer-technology">
+                        <AASProgramSection />
+                    </div>
+                    <div id="bs-computer-science">
+                        <BSComputerScienceSection />
+                    </div>
                     <SpecializationsAccordion />
                     <CareerMilestones />
-                    <AdditionalDegreesPage />
-                    <MinorsAccordion />
+                    <div id="additional-degrees">
+                        <BSMathematicsSection />
+                    </div>
+                    <div id="bs-information-systems-and-informatics">
+                        <BSInformaticsSection />
+                    </div>
+                    <div id="minors-certificates">
+                        <MinorsAccordion />
+                    </div>
                     <DoubleCountingPolicy />
+                    {/* Graduate with Honors Section */}
+                    <section className="py-16 bg-white">
+                        <div className="max-w-4xl mx-auto px-6">
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6 }}
+                                className="bg-gradient-to-br from-teal-50 to-blue-50 rounded-2xl p-8 md:p-12 border border-teal-100 shadow-sm"
+                            >
+                                <div className="flex items-center gap-3 mb-6">
+                                    <div className="p-3 bg-teal-600 rounded-xl text-white">
+                                        <GraduationCap size={28} />
+                                    </div>
+                                    <h2 className="text-3xl md:text-4xl font-bold text-teal-900">
+                                        Graduate with Honors
+                                    </h2>
+                                </div>
+
+                                <div className="prose prose-slate max-w-none">
+                                    <p className="text-slate-700 leading-relaxed text-lg">
+                                        Students may graduate with honors in Computer Science. To receive honors, the student must have at least a <strong className="text-teal-900">3.5 grade point average</strong> in courses taken in the major. The student must also complete an honors project by taking <strong className="text-teal-900">CSC 450</strong>, where the student works closely with a faculty member to define the project, carry out the research and investigation, and write the final report. The project must be approved by the department Chairperson. Students will receive credit through CSC 450 for their work on an honors project. <strong className="text-teal-900">CSC 450 cannot substitute for an elective course.</strong>
+                                    </p>
+                                </div>
+                            </motion.div>
+                        </div>
+                    </section>
                     <ABETAccreditation />
 
                 </div>

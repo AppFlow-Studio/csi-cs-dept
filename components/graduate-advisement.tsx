@@ -69,7 +69,7 @@ export default function GraduateAdvisement() {
                                 {/* Right: Catalog Link */}
                                 <div className="flex-shrink-0 pt-2 md:pt-0 md:border-l md:border-slate-200 md:pl-6">
                                     <a
-                                        href="#"
+                                        href="https://www.cs.csi.cuny.edu/content/abet_table.pdf"
                                         className="text-[#7abde8] hover:text-blue-700 underline font-medium text-sm inline-flex items-center gap-1.5 transition-colors"
                                     >
                                         <BookOpen size={14} />

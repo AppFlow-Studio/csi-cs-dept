@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 import { Calendar, Award, ArrowRight, FileText, Users } from 'lucide-react';
 
 // --- Data Configuration ---
@@ -13,27 +14,11 @@ type NewsItem = {
     date: string;
     image: string;
     author?: string;
+    link?: string; // Optional link URL
 };
 
 const newsData: Record<string, NewsItem[]> = {
-    "2025": [
-        {
-            id: "25-1",
-            title: "Spring 2025 Registration & Advising Now Open",
-            category: "Event",
-            date: "January 2025",
-            image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2670&auto=format&fit=crop",
-            author: "Department Office"
-        },
-        {
-            id: "25-2",
-            title: "Upcoming Research Symposium: AI in Urban Environments",
-            category: "Research",
-            date: "March 2025",
-            image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2670&auto=format&fit=crop",
-            author: "CSI Research Center"
-        }
-    ],
+
     "2024": [
         {
             id: "24-1",
@@ -41,7 +26,8 @@ const newsData: Record<string, NewsItem[]> = {
             category: "Grant",
             date: "January 2024",
             image: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=2670&auto=format&fit=crop",
-            author: "Prof. Louis Petingi"
+            author: "Prof. Louis Petingi",
+            link: "https://www.nsf.gov/funding/pgm_summ.jsp?pims_id=5517"
         }
     ],
     "2023": [
@@ -51,7 +37,8 @@ const newsData: Record<string, NewsItem[]> = {
             category: "Grant",
             date: "July 2023",
             image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop",
-            author: "Prof. Xiaowen Zhang"
+            author: "Prof. Xiaowen Zhang",
+            link: "https://cybernyc.org"
         },
         {
             id: "23-2",
@@ -77,7 +64,8 @@ const newsData: Record<string, NewsItem[]> = {
             category: "Award",
             date: "September 2022",
             image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=2670&auto=format&fit=crop",
-            author: "Prof. Louis Petingi"
+            author: "Prof. Louis Petingi",
+            link: "https://www.ae-info.org"
         },
         {
             id: "22-2",
@@ -85,7 +73,8 @@ const newsData: Record<string, NewsItem[]> = {
             category: "Award",
             date: "July 2022",
             image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2670&auto=format&fit=crop",
-            author: "Prof. S. Agaian"
+            author: "Prof. S. Agaian",
+            link: "https://www.ae-info.org"
         },
         {
             id: "22-3",
@@ -93,7 +82,8 @@ const newsData: Record<string, NewsItem[]> = {
             category: "Research",
             date: "January 2022",
             image: "https://images.unsplash.com/photo-1564325724739-bae0bd08762c?q=80&w=2670&auto=format&fit=crop",
-            author: "Samuel Iskhakov (Mentee)"
+            author: "Samuel Iskhakov (Mentee)",
+            link: "https://www.societyforscience.org/regeneron-sts/"
         }
     ],
     "2021": [
@@ -103,7 +93,8 @@ const newsData: Record<string, NewsItem[]> = {
             category: "Award",
             date: "October 2021",
             image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2670&auto=format&fit=crop",
-            author: "Prof. S. Agaian"
+            author: "Prof. S. Agaian",
+            link: "https://www.aaia-ai.org"
         },
         {
             id: "21-2",
@@ -116,20 +107,14 @@ const newsData: Record<string, NewsItem[]> = {
     ]
 };
 
-const years = ["2025", "2024", "2023", "2022", "2021"];
+const years = ["2024", "2023", "2022", "2021"];
 
 // --- Components ---
 
 const NewsCard = ({ item }: { item: NewsItem }) => {
-    return (
-        <motion.div
-            layout
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.3 }}
-            className="group flex flex-col h-full bg-white border border-gray-200 hover:shadow-xl transition-all duration-300 cursor-pointer"
-        >
+    const isExternalLink = item.link?.startsWith('http://') || item.link?.startsWith('https://');
+    const cardContent = (
+        <>
             {/* Image Section */}
             <div className="relative h-40 overflow-hidden bg-gray-100">
                 <img
@@ -143,9 +128,9 @@ const NewsCard = ({ item }: { item: NewsItem }) => {
             </div>
 
             {/* Content Section */}
-            <div className="p-4 flex flex-col flex-grow">
+            <div className="p-4 flex flex-col grow">
                 <div className="mb-2">
-                    <h3 className="font-bold text-gray-900 line-clamp-2 group-hover:text-blue-700 transition-colors h-[3.5rem]">
+                    <h3 className="font-bold text-gray-900 line-clamp-3 group-hover:text-blue-700 transition-colors h-fit min-h-14">
                         {item.title}
                     </h3>
                 </div>
@@ -160,11 +145,45 @@ const NewsCard = ({ item }: { item: NewsItem }) => {
                         <Calendar size={14} className="mr-1" />
                         {item.date}
                     </div>
-                    <div className="bg-gray-50 p-1 rounded-full group-hover:bg-[#7abde8] group-hover:text-white transition-colors">
-                        <ArrowRight size={16} />
-                    </div>
+                    {item.link && (
+                        <div className="bg-gray-50 p-1 rounded-full group-hover:bg-[#7abde8] group-hover:text-white transition-colors">
+                            <ArrowRight size={16} />
+                        </div>
+                    )}
                 </div>
             </div>
+        </>
+    );
+
+    const cardClassName = "group flex flex-col h-full bg-white border border-gray-200 hover:shadow-xl transition-all duration-300" + (item.link ? " cursor-pointer" : "");
+
+    return (
+        <motion.div
+            layout
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.3 }}
+            className={cardClassName}
+        >
+            {item.link ? (
+                isExternalLink ? (
+                    <a
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex flex-col h-full"
+                    >
+                        {cardContent}
+                    </a>
+                ) : (
+                    <Link href={item.link} className="flex flex-col h-full">
+                        {cardContent}
+                    </Link>
+                )
+            ) : (
+                cardContent
+            )}
         </motion.div>
     );
 };
@@ -202,7 +221,7 @@ const LogoTicker = () => {
 // --- Main Component ---
 
 export default function DepartmentNewsSection() {
-    const [activeYear, setActiveYear] = useState("2023");
+    const [activeYear, setActiveYear] = useState("2024");
 
     return (
         <section className="py-16 bg-white text-[#2d2f31]">

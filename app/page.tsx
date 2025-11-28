@@ -13,7 +13,9 @@ import {
   BookOpen,
   Users,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Facebook,
+  ExternalLink
 } from 'lucide-react';
 import { ContentSection } from '@/components/info-card';
 import Footer from '@/components/footer';
@@ -23,6 +25,7 @@ import { LinkPreview } from '@/components/ui/link-preview';
 import CSIProgramsPage from '@/components/csi-program-page';
 import DepartmentHeadSection from '@/components/deparment-head';
 import DepartmentNewsSection from '@/components/news';
+import Link from 'next/link';
 
 // --- Components ---
 
@@ -32,8 +35,6 @@ const HeroSection = () => {
     <section className="relative w-full max-w-[1600px] mx-auto mt-6 md:px-6 mb-12 group rounded-xl">
       {/* Main Banner Background */}
       <div className="relative w-full h-[400px] md:h-[550px] bg-linear-to-r from-blue-900 to-cyan-600 overflow-hidden md:shadow-lg rounded-xl">
-        {/* Abstract Background Elements */}
-        <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/circuit-board.png')]"></div>
 
         {/* Image (Right Side) */}
         <div className="absolute right-0 top-0 h-full w-1/2 lg:w-2/3">
@@ -62,12 +63,12 @@ const HeroSection = () => {
         </p>
 
         <div className="flex gap-4">
-          <button className="bg-[#2d2f31] text-white font-bold px-6 py-3 hover:bg-black transition-colors rounded-lg">
+          <Link href="/courses" className="bg-[#2d2f31] text-white font-bold px-6 py-3 hover:bg-black transition-colors rounded-lg">
             View Programs
-          </button>
-          <button className="bg-white border border-black text-black font-bold px-6 py-3 hover:bg-gray-100 transition-colors rounded-lg">
+          </Link>
+          <Link href="/resources" className="bg-white border border-black text-black font-bold px-6 py-3 hover:bg-gray-100 transition-colors rounded-lg">
             Learn AI
-          </button>
+          </Link>
         </div>
       </motion.div>
     </section>
@@ -81,10 +82,35 @@ const HeroSection = () => {
 export default function CSIDepartmentPage() {
   return (
     <div className="min-h-screen bg-white font-sans text-[#2d2f31]">
-  
+
       <main>
         <HeroSection />
         <ContentSection />
+
+        {/* Facebook Social Link Section */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="px-6"
+        >
+          <div className="flex items-start justify-start">
+            <motion.a
+              href="https://www.facebook.com/computerscienceatcsi/"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-start gap-3 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
+            >
+              <Facebook size={20} className="group-hover:scale-110 transition-transform" />
+              <span className="font-semibold text-sm md:text-base">Follow us on Facebook</span>
+              <ExternalLink size={16} className="opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+            </motion.a>
+          </div>
+        </motion.section>
+
       </main>
 
       <section className='max-w-8xl mx-auto px-6'>
@@ -139,13 +165,13 @@ export default function CSIDepartmentPage() {
               alt: "Watershed",
             }
           ]}
-          achievementsTitle="Our Achievements in Numbers"
-          achievementsDescription="Our students consistently excel in national competitions, secure prestigious internships at Fortune 500 companies, and launch successful tech startups. Our globally recognized faculty includes award-winning researchers, published authors in top-tier journals, and industry leaders who bring cutting-edge expertise directly into the classroom. Together, we're shaping the next generation of computer science innovators."
+          achievementsTitle="Where Our Students Build Their Careers"
+          achievementsDescription="Our graduates are highly sought after by leading technology companies, securing positions at Fortune 500 firms, innovative startups, and cutting-edge research institutions. Through rigorous academic preparation, hands-on projects, and industry partnerships, we equip our students with the skills and experience needed to excel in today's competitive tech landscape."
           achievements={
             [
-              { label: "Companies Supported", value: "400+" },
-              { label: "Projects Finalized", value: "800+" },
-              { label: "Recognized Awards", value: "10+" },
+              { label: "Graduates Hired", value: "95%" },
+              { label: "Top Companies", value: "200+" },
+              { label: "Average Starting Salary", value: "$85K+" },
             ]
           }
         />

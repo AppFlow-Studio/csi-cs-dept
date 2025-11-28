@@ -65,7 +65,7 @@ export default function DoubleCountingPolicy() {
                         {/* PDF Link */}
                         <div className="mb-8 pb-8 border-b border-slate-200">
                             <a
-                                href="#"
+                                href="https://www.cs.csi.cuny.edu/content/BS_MS_Accelerated_Poster.pdf"
                                 className="inline-flex items-center gap-3 px-6 py-3 bg-[#7abde8] text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg"
                             >
                                 <FileText size={20} />

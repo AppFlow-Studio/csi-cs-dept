@@ -117,7 +117,7 @@ const specializations = [
         image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop",
         // Note: Image 2 did not provide specific tracks for Data Science, so we use a placeholder structure
         description: "The Data Science specialization focuses on extracting knowledge from data through statistical analysis and machine learning. Please consult the department flyer or your advisor for the specific course sequence.",
-        linkText: "View Data Science Curriculum"
+        // linkText: "View Data Science Curriculum"
     }
 ];
 
@@ -152,7 +152,7 @@ export default function SpecializationsAccordion() {
                             You may choose to earn a specialization in one of the following areas.
                             Please speak to your <a href="#" className="text-[#7abde8] underline font-bold hover:text-blue-800">advisor</a> if one of these specializations interests you so you can plan to take the corresponding courses.
                         </p>
-                        <a href="#" className="inline-flex items-center gap-2 text-blue-700 font-bold hover:underline">
+                        <a href="https://www.cs.csi.cuny.edu/content/CSC_Specializations_flyer_updated_SU18.pdf" className="inline-flex items-center gap-2 text-blue-700 font-bold hover:underline">
                             <FileText size={16} /> Open PDF Flyer
                         </a>
                     </div>

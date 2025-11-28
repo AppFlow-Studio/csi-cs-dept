@@ -127,7 +127,7 @@ export default function PhDProgramSection() {
                                     <div className="flex items-start gap-4">
                                         <MapPin className="text-blue-500 shrink-0 mt-1" size={20} />
                                         <div>
-                                            <p className="font-medium text-slate-200">365 Fifth Avenue, Room 4319</p>
+                                            <p className="font-medium text-slate-200">365 5th Ave</p>
                                             <p className="text-sm text-slate-400">New York, NY 10016</p>
                                         </div>
                                     </div>
@@ -148,8 +148,8 @@ export default function PhDProgramSection() {
 
                                     <div className="flex items-center gap-4">
                                         <Mail className="text-blue-500 shrink-0" size={20} />
-                                        <a href="mailto:compsci@gc.cuny.edu" className="text-slate-200 hover:text-white transition-colors">
-                                            compsci@gc.cuny.edu
+                                        <a href="mailto:admissions@gc.cuny.edu" className="text-slate-200 hover:text-white transition-colors">
+                                            admissions@gc.cuny.edu
                                         </a>
                                     </div>
                                 </div>
@@ -160,13 +160,13 @@ export default function PhDProgramSection() {
                                         href="https://www.gc.cuny.edu/computer-science"
                                         target="_blank"
                                         rel="noreferrer"
-                                        className="flex-1 bg-[#7abde8] hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-bold transition-all flex items-center justify-center gap-2 group"
+                                        className="flex-1 bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-bold transition-all flex items-center justify-center gap-2 group"
                                     >
                                         Program Details
                                         <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform" />
                                     </a>
                                     <a
-                                        href="#"
+                                        href="https://www.gc.cuny.edu/admissions-aid/how-apply"
                                         className="flex-1 bg-transparent border border-slate-600 hover:bg-slate-800 text-white px-6 py-3 rounded-lg font-bold transition-all flex items-center justify-center"
                                     >
                                         Admissions

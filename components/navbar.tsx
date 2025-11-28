@@ -5,12 +5,13 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeLink, setActiveLink] = useState("Home");
-
-    const navLinks = [
+    const pathname = usePathname();
+    const navLinks = [ 
         { name: "Home", href: "/" },
         { name: "Undergraduate", href: "/undergraduate" },
         { name: "Graduate", href: "/graduate" },
@@ -73,7 +74,7 @@ export default function Navbar() {
                                 key={link.name}
                                 href={link.href}
                                 onClick={() => setActiveLink(link.name)}
-                                className={`px-4 py-2 text-sm font-medium transition-all duration-200 relative ${activeLink === link.name
+                                className={`px-4 py-2 text-sm font-medium transition-all duration-200 relative ${pathname === link.href
                                     ? "text-[#7abde8]"
                                     : "text-gray-700 hover:text-[#7abde8]"
                                     }`}

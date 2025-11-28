@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 import { GraduationCap, ArrowLeftRight, BookOpen, ChevronDown, ArrowRight, ExternalLink } from 'lucide-react';
 
 // --- Data Configuration ---
@@ -18,24 +19,32 @@ const features = [
             <div className="space-y-4 text-slate-600">
                 <div>
                     <p className="font-semibold text-slate-900 mb-2">For AAS Computer Technology, BS in Computer Science, or BS in Computer Science-Mathematics:</p>
-                    <p className="mb-3">You can find out who is your advisor on <a href="https://home.cunyfirst.cuny.edu" target="_blank" rel="noopener noreferrer" className="text-[#7abde8] hover:text-blue-700 underline font-medium">CUNYFirst</a>. Please use the <a href="#" className="text-[#7abde8] hover:text-blue-700 underline font-medium">CS FlowChart</a> for self-advisement.</p>
+                    <p className="mb-3">You can find out who is your advisor on <a href="https://www.cuny.edu/about/administration/offices/cis/cunyfirst/" target="_blank" rel="noopener noreferrer" className="text-[#7abde8] hover:text-blue-700 underline font-medium">CUNYFirst</a>. Please use the <a href="https://www.cs.csi.cuny.edu/~flowchart/" className="text-[#7abde8] hover:text-blue-700 underline font-medium">CS FlowChart</a> for self-advisement.</p>
                 </div>
                 <div>
                     <p className="font-semibold text-slate-900 mb-2">For BS in Information Systems and Informatics (ISI):</p>
                     <p className="mb-3">Please contact the ISI coordinator:</p>
                     <ul className="list-disc list-inside space-y-1 ml-2">
-                        <li>Prof. Louis Petingi</li>
-                        <li>Prof. Soon Chun</li>
+                        <li>
+                            <Link href="/people#professors" className="text-[#7abde8] hover:text-blue-700 underline font-medium">
+                                Prof. Louis Petingi
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/people#professors" className="text-[#7abde8] hover:text-blue-700 underline font-medium">
+                                Prof. Soon Chun
+                            </Link>
+                        </li>
                     </ul>
                 </div>
                 <div className="pt-4 border-t border-slate-200 space-y-2">
-                    <a href="https://degreeworks.cuny.edu" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[#7abde8] hover:text-blue-700 font-medium">
+                    <a href="https://ssologin.cuny.edu/cuny.html?bmctx=D59E04882DF4F80F0E4A64DD59167034&password=secure_string&contextType=external&OverrideRetryLimit=1&ChallengeRedirectMethod=GET&username=string&challenge_url=https://ssologin.cuny.edu/cuny.html&request_id=3988825378751157104&authn_try_count=0&locale=en_US&resource_url=https%253A%252F%252Flandingpageprod.cuny.edu%252Fland%252Fmain.jsp" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[#7abde8] hover:text-blue-700 font-medium">
                         Sign in to DegreeWorks <ExternalLink size={14} />
                     </a>
                     <p className="text-sm text-slate-500">See what courses you can take to fulfill degree requirements and track your academic progress.</p>
-                    <a href="#" className="flex items-center gap-2 text-[#7abde8] hover:text-blue-700 font-medium">
+                    <Link href="/courses?filter=undergraduate" className="flex items-center gap-2 text-[#7abde8] hover:text-blue-700 font-medium">
                         View Undergraduate Catalog <ExternalLink size={14} />
-                    </a>
+                    </Link>
                 </div>
             </div>
         )
@@ -53,13 +62,13 @@ const features = [
                 <div className="bg-blue-50 border border-blue-100 rounded-lg p-4">
                     <p className="font-semibold text-slate-900 mb-2">To request evaluation:</p>
                     <ol className="list-decimal list-inside space-y-2 ml-2">
-                        <li>Complete the <a href="#" className="text-[#7abde8] hover:text-blue-700 underline font-medium">Transfer Credit Evaluation Form</a></li>
+                        <li>Complete the <a href="https://www.cs.csi.cuny.edu/content/TransferOnlineFormV2.pdf" className="text-[#7abde8] hover:text-blue-700 underline font-medium">Transfer Credit Evaluation Form</a></li>
                         <li>Include a copy of your transcript from the institution at which you completed the course</li>
                         <li>Include either the course description (from that college's catalog) or syllabus</li>
                         <li>Submit these to <span className="font-medium">1N-215</span>, or contact the department Chair</li>
                     </ol>
                 </div>
-                <a href="#" className="inline-flex items-center gap-2 text-[#7abde8] hover:text-blue-700 font-medium border border-blue-200 rounded-lg px-4 py-2 hover:bg-blue-50 transition-colors">
+                <a href="https://www.cs.csi.cuny.edu/content/TransferOnlineFormV2.pdf" className="inline-flex items-center gap-2 text-[#7abde8] hover:text-blue-700 font-medium border border-blue-200 rounded-lg px-4 py-2 hover:bg-blue-50 transition-colors">
                     <BookOpen size={16} />
                     Transfer Credit Evaluation Form Download
                     <ExternalLink size={14} />
@@ -77,13 +86,13 @@ const features = [
         content: (
             <div className="space-y-4 text-slate-600">
                 <div>
-                    <a href="#" className="flex items-center gap-2 text-[#7abde8] hover:text-blue-700 font-medium mb-2">
+                    <a href="https://www.cs.csi.cuny.edu/content/tutoring.pdf" className="flex items-center gap-2 text-[#7abde8] hover:text-blue-700 font-medium mb-2">
                         Computer Science Tutoring Schedule <ExternalLink size={14} />
                     </a>
                     <p className="text-sm text-slate-500">View the current tutoring schedule for computer science courses.</p>
                 </div>
                 <div className="pt-4 border-t border-slate-200">
-                    <a href="#" className="flex items-center gap-2 text-[#7abde8] hover:text-blue-700 font-medium mb-2">
+                    <a href="https://www.csi.cuny.edu/students/academic-assistance/tutoring" className="flex items-center gap-2 text-[#7abde8] hover:text-blue-700 font-medium mb-2">
                         Office of Academic Support <ExternalLink size={14} />
                     </a>
                     <p className="text-sm text-slate-500">Access additional academic support services and resources.</p>

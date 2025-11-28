@@ -6,8 +6,8 @@ import { GraduationCap, BookOpen, Target, CheckCircle2, ExternalLink, ArrowRight
 
 export default function MSProgramSection() {
     const quickLinks = [
-        { name: 'Degree Requirements', href: '#' },
-        { name: 'Tuition', href: '#' }
+        { name: 'Degree Requirements', href: 'https://csi-graduate.catalog.cuny.edu/programs/CSC-MS' },
+        { name: 'Tuition', href: 'https://csi-graduate.catalog.cuny.edu/financial-aid-and-tuition/tuition-and-fees' }
     ];
 
     const foundationTopics = [
@@ -362,7 +362,7 @@ export default function MSProgramSection() {
                                                 <p className="text-slate-700 leading-relaxed">
                                                     The remaining <span className="font-semibold text-slate-900">six courses</span> will be chosen from any of courses listed in the graduate catalog except <span className="font-mono text-sm bg-slate-100 px-1.5 py-0.5 rounded">CSC 602</span>, <span className="font-mono text-sm bg-slate-100 px-1.5 py-0.5 rounded">CSC 702</span>, and <span className="font-mono text-sm bg-slate-100 px-1.5 py-0.5 rounded">CSC 704</span>.{' '}
                                                     <a
-                                                        href="#"
+                                                        href="/courses"
                                                         className="text-[#7abde8] hover:text-blue-700 underline font-medium inline-flex items-center gap-1"
                                                     >
                                                         Click here

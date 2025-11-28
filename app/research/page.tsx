@@ -203,7 +203,6 @@ export default function ResearchHero() {
 }
 
 // --- Sub-Component: The Research Article Card ---
-
 const ResearchCard = ({ project }: { project: typeof researchProjects[0] }) => {
     return (
         <motion.div

@@ -155,7 +155,7 @@ export default function ABETAccreditation() {
                             </h3>
                         </div>
                         <a
-                            href="#"
+                            href="https://www.cs.csi.cuny.edu/content/abet_table.pdf"
                             className="inline-flex items-center gap-2 text-[#7abde8] hover:text-blue-700 font-semibold text-lg transition-colors"
                         >
                             BS Program Enrollment and Degree Data

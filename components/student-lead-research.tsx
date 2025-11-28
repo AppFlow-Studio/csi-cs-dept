@@ -15,7 +15,8 @@ import {
   FileCode,
   ScanLine,
   Cpu,
-  ArrowUpRight
+  ArrowUpRight,
+  FileText
 } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -35,7 +36,9 @@ const projects = [
     icon: Eye,
     size: "lg", // Large card
     color: "blue",
-    description: "Advanced algorithms for clarifying low-light tunnel imagery for safety systems."
+    description: "Advanced algorithms for clarifying low-light tunnel imagery for safety systems.",
+    pdfUrl: "https://www.cs.csi.cuny.edu/content/research/optimized-tunnel-image-enhancement.pdf",
+    pdfPreview: "/student-research/optimized-tunnel.png"
   },
   {
     id: 2,
@@ -44,7 +47,9 @@ const projects = [
     icon: Lock,
     size: "md",
     color: "slate",
-    description: "Implementation of a secure index for encrypted database querying."
+    description: "Implementation of a secure index for encrypted database querying.",
+    pdfUrl: "https://www.cs.csi.cuny.edu/content/research/searchable-encryption.pdf",
+    pdfPreview: "/student-research/searchable-symm.png"
   },
   {
     id: 3,
@@ -53,7 +58,9 @@ const projects = [
     icon: Gamepad2,
     size: "sm",
     color: "purple",
-    description: "Gamifying computer science fundamentals for ed-tech."
+    description: "Gamifying computer science fundamentals for ed-tech.",
+    pdfUrl: "https://www.cs.csi.cuny.edu/content/research/haunted-decoder.pdf",
+    pdfPreview: "/student-research/haunted-decoder.png"
   },
   {
     id: 4,
@@ -62,7 +69,9 @@ const projects = [
     icon: BookOpen,
     size: "md",
     color: "emerald",
-    description: "Interactive medical education platform for students."
+    description: "Interactive medical education platform for students.",
+    pdfUrl: "https://www.cs.csi.cuny.edu/content/research/meducation.pdf",
+    pdfPreview: "/student-research/meducation.png"
   },
   {
     id: 5,
@@ -71,7 +80,9 @@ const projects = [
     icon: Activity,
     size: "sm",
     color: "rose",
-    description: "Simulation software for pandemic response tracking."
+    description: "Simulation software for pandemic response tracking.",
+    pdfUrl: "https://www.cs.csi.cuny.edu/content/research/covid-19-virtual.pdf",
+    pdfPreview: "/student-research/covid-19-virtual.png"
   },
   {
     id: 6,
@@ -80,7 +91,9 @@ const projects = [
     icon: Globe,
     size: "lg",
     color: "indigo",
-    description: "Connecting students across borders to ease cultural transition."
+    description: "Connecting students across borders to ease cultural transition.",
+    pdfUrl: "https://www.cs.csi.cuny.edu/content/research/finter.pdf",
+    pdfPreview: "/student-research/finter.png"
   },
   {
     id: 7,
@@ -89,7 +102,9 @@ const projects = [
     icon: Smartphone,
     size: "md",
     color: "slate",
-    description: "Improving privacy protection for mobile users in location-based services."
+    description: "Improving privacy protection for mobile users in location-based services.",
+    pdfUrl: "https://www.cs.csi.cuny.edu/content/research/spatial-cloaking.pdf",
+    pdfPreview: "/student-research/user-density.png"
   },
   {
     id: 8,
@@ -98,7 +113,9 @@ const projects = [
     icon: ShieldCheck,
     size: "md",
     color: "blue",
-    description: "Using Rainbow Tables to solve organizational password security issues."
+    description: "Using Rainbow Tables to solve organizational password security issues.",
+    pdfUrl: "https://www.cs.csi.cuny.edu/content/research/network-security.pdf",
+    pdfPreview: "/student-research/modern-network.png"
   },
   {
     id: 9,
@@ -107,7 +124,9 @@ const projects = [
     icon: ScanLine,
     size: "sm",
     color: "slate",
-    description: "A mutual authentication scheme for secure logins."
+    description: "A mutual authentication scheme for secure logins.",
+    pdfUrl: "https://www.cs.csi.cuny.edu/content/research/qr-otp-auth.pdf",
+    pdfPreview: "/student-research/qr-otp-auth.png"
   },
   {
     id: 10,
@@ -116,7 +135,9 @@ const projects = [
     icon: Wifi,
     size: "md",
     color: "indigo",
-    description: "Analysis of radio frequency identification security vulnerabilities."
+    description: "Analysis of radio frequency identification security vulnerabilities.",
+    pdfUrl: "https://www.cs.csi.cuny.edu/content/research/rfid-protocols.pdf",
+    pdfPreview: "/student-research/a-study-radio-frequency.png"
   },
   {
     id: 11,
@@ -125,7 +146,9 @@ const projects = [
     icon: FileCode,
     size: "md",
     color: "emerald",
-    description: "Designing storage systems that ensure permanent data erasure."
+    description: "Designing storage systems that ensure permanent data erasure.",
+    pdfUrl: "https://www.cs.csi.cuny.edu/content/research/secure-deletion.pdf",
+    pdfPreview: "/student-research/desiging-a-file-system.png"
   },
   {
     id: 12,
@@ -134,7 +157,9 @@ const projects = [
     icon: Cpu,
     size: "lg",
     color: "purple",
-    description: "Vulnerability assessment of web-based wireless gateway systems."
+    description: "Vulnerability assessment of web-based wireless gateway systems.",
+    pdfUrl: "https://www.cs.csi.cuny.edu/content/research/wireless-auth-bypass.pdf",
+    pdfPreview: "/student-research/bypassing-web-based-wireless-auth.png"
   }
 ];
 
@@ -168,56 +193,75 @@ const BentoCard = ({ project, index }: { project: typeof projects[0], index: num
   }[project.color];
 
   return (
-    <motion.div
+    <motion.a
+      href={project.pdfUrl}
+      target="_blank"
+      rel="noopener noreferrer"
       initial={{ opacity: 0, y: 20, scale: 0.95 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.05 }}
       whileHover={{ y: -5, transition: { duration: 0.2 } }}
       className={cn(
-        "group relative p-6 rounded-3xl border border-transparent transition-all duration-300 shadow-sm hover:shadow-lg cursor-pointer overflow-hidden flex flex-col justify-between",
+        "group relative rounded-3xl border border-transparent transition-all duration-300 shadow-sm hover:shadow-xl cursor-pointer overflow-hidden flex flex-col",
         spanClass,
         colorStyles
       )}
     >
-      {/* Hover Gradient Overlay */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-white transition-opacity" />
+      {/* PDF Preview Background with Frosted Glass Effect */}
+      <div className="absolute inset-0 overflow-hidden">
+        <img
+          src={project.pdfPreview}
+          alt={project.title}
+          className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700"
+        />
+        {/* Frosted Glass Overlay */}
+        <div className="absolute inset-0 bg-white/50 backdrop-blur-[4px] group-hover:bg-white/40 group-hover:backdrop-blur-[0px] transition-all duration-500" />
+        {/* Gradient Overlay for Text Readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/80" />
+      </div>
 
-      {/* Top: Icon & Arrow */}
-      <div className="flex justify-between items-start mb-4 relative z-10">
-        <div className={cn("p-3 rounded-2xl shadow-sm", iconColor)}>
-          <project.icon size={24} />
+      {/* Content Layer */}
+      <div className="relative z-10 p-6 flex flex-col justify-between h-full">
+        {/* Top: Icon & PDF Badge */}
+        <div className="flex justify-between items-start mb-4">
+          <div className={cn("p-3 rounded-2xl shadow-lg backdrop-blur-sm bg-white/90", iconColor)}>
+            <project.icon size={24} />
+          </div>
         </div>
-        <div className="opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-2 group-hover:translate-x-0">
-          <div className="p-2 rounded-full bg-white/50 hover:bg-white transition-colors">
-            <ArrowUpRight size={18} />
+
+        {/* Middle: Content */}
+        <div className="flex-1 flex flex-col justify-end">
+          <span className="text-[10px] font-bold uppercase tracking-wider opacity-70 mb-2 block text-slate-700">
+            {project.category}
+          </span>
+          <h3 className={cn(
+            "font-bold leading-tight mb-2 text-slate-900",
+            project.size === 'lg' ? "text-2xl" : "text-lg"
+          )}>
+            {project.title}
+          </h3>
+          <p className="text-sm opacity-80 leading-relaxed text-slate-700 mb-4">
+            {project.description}
+          </p>
+        </div>
+
+        {/* Bottom: CTA Button */}
+        <div className="mt-auto pt-4 border-t border-white/30">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-semibold text-slate-700 uppercase tracking-wider">
+              View Research
+            </span>
+            <div className="p-2 rounded-full bg-white/90 backdrop-blur-sm shadow-md group-hover:bg-[#7abde8] group-hover:text-white transition-all duration-300">
+              <ArrowUpRight size={18} className="text-slate-700 group-hover:text-white transition-colors" />
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Middle: Content */}
-      <div className="relative z-10">
-        <span className="text-[10px] font-bold uppercase tracking-wider opacity-60 mb-2 block">
-          {project.category}
-        </span>
-        <h3 className={cn(
-          "font-bold leading-tight mb-2",
-          project.size === 'lg' ? "text-2xl" : "text-lg"
-        )}>
-          {project.title}
-        </h3>
-        <p className="text-sm opacity-70 leading-relaxed">
-          {project.description}
-        </p>
-      </div>
-
-      {/* Decorative Background Pattern (Optional) */}
-      {project.size === 'lg' && (
-        <div className="absolute -bottom-10 -right-10 opacity-5 pointer-events-none">
-          <project.icon size={200} />
-        </div>
-      )}
-    </motion.div>
+      {/* Hover Shine Effect */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform -translate-x-full group-hover:translate-x-full" />
+    </motion.a>
   );
 };
 

@@ -15,6 +15,7 @@ import {
     ChevronLeft,
     ChevronRight
 } from 'lucide-react';
+import Link from 'next/link';
 
 interface CardProps {
     title: string;
@@ -22,47 +23,50 @@ interface CardProps {
     icon: React.ReactNode;
     image: string;
     delay: number;
+    link: string;
 }
-const InfoCard = ({ title, badge, icon, image, delay }: CardProps) => {
+const InfoCard = ({ title, badge, icon, image, delay, link }: CardProps) => {
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: delay }}
-            whileHover={{ y: -8, transition: { duration: 0.2 } }}
-            className="group cursor-pointer flex flex-col h-full bg-white border border-gray-200 shadow-sm hover:shadow-xl transition-shadow overflow-hidden rounded-xl"
-        >
-            <div className="relative h-48 overflow-hidden">
-                <img
-                    src={image}
-                    alt={title}
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60"></div>
-            </div>
-
-            <div className="p-4 flex flex-col flex-grow relative">
-                {/* Floating Icon Badge */}
-                <div className="absolute -top-8 right-4 bg-white p-3 rounded-full shadow-md text-[#7abde8] group-hover:text-blue-800 transition-colors">
-                    {icon}
+        <Link href={link}>
+            <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: delay }}
+                whileHover={{ y: -8, transition: { duration: 0.2 } }}
+                className="group cursor-pointer flex flex-col h-full bg-white border border-gray-200 shadow-sm hover:shadow-xl transition-shadow overflow-hidden rounded-xl"
+            >
+                <div className="relative h-48 overflow-hidden">
+                    <img
+                        src={image}
+                        alt={title}
+                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60"></div>
                 </div>
 
-                <div className="mb-2">
-                    <span className="inline-block bg-gray-100 text-gray-700 text-xs font-bold px-2 py-1 rounded-sm">
-                        {badge}
-                    </span>
-                </div>
+                <div className="p-4 flex flex-col flex-grow relative">
+                    {/* Floating Icon Badge */}
+                    <div className="absolute -top-8 right-4 bg-white p-3 rounded-full shadow-md text-[#7abde8] group-hover:text-blue-800 transition-colors">
+                        {icon}
+                    </div>
 
-                <h3 className="font-bold text-xl text-gray-900 mb-1 group-hover:text-blue-700 transition-colors">
-                    {title}
-                </h3>
+                    <div className="mb-2">
+                        <span className="inline-block bg-gray-100 text-gray-700 text-xs font-bold px-2 py-1 rounded-sm">
+                            {badge}
+                        </span>
+                    </div>
 
-                <div className="mt-auto pt-4 flex justify-end">
-                    <ArrowRight className="text-gray-400 group-hover:text-black transition-colors" size={20} />
+                    <h3 className="font-bold text-xl text-gray-900 mb-1 group-hover:text-blue-700 transition-colors">
+                        {title}
+                    </h3>
+
+                    <div className="mt-auto pt-4 flex justify-end">
+                        <ArrowRight className="text-gray-400 group-hover:text-black transition-colors" size={20} />
+                    </div>
                 </div>
-            </div>
-        </motion.div>
+            </motion.div>
+        </Link>
     );
 };
 
@@ -74,6 +78,7 @@ export const ContentSection = () => {
             icon: <BookOpen size={24} />,
             image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2670&auto=format&fit=crop",
             specializations: ["Game Development", "Networking and Security", "High Perfomance Computing", "Data Science"],
+            link: "/undergraduate",
         },
         {
             title: "Graduate Programs",
@@ -81,6 +86,7 @@ export const ContentSection = () => {
             icon: <GraduationCap size={24} />,
             image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2670&auto=format&fit=crop",
             specializations: ["Artificial Intelligence and Data Analytics", "Cloud Computing and Software Engineering", "Cybersecurity and Networks"],
+            link: "/graduate",
         },
         {
             title: "Faculty & Staff",
@@ -88,6 +94,7 @@ export const ContentSection = () => {
             icon: <Users size={24} />,
             image: "https://images.unsplash.com/photo-1544531320-98e96f667e68?q=80&w=2670&auto=format&fit=crop",
             specializations: ["Computer Science", "Computer Engineering", "Information Systems", "Cybersecurity"],
+            link: "/people",
         }
     ];
 
@@ -125,6 +132,7 @@ export const ContentSection = () => {
                             icon={card.icon}
                             image={card.image}
                             delay={index * 0.15}
+                            link={card.link}
                         />
                     ))}
                 </div>
