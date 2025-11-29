@@ -171,7 +171,7 @@ export const About3 = ({
             <motion.img
               src={secondaryImage.src}
               alt={secondaryImage.alt}
-              className="grow basis-0 rounded-xl object-cover md:w-1/2 lg:min-h-0 lg:w-auto"
+              className="grow basis-0 rounded-xl object-cover object-center md:w-1/2 lg:min-h-0 lg:w-auto"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={viewportOptions}

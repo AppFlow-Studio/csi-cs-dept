@@ -49,7 +49,7 @@ const facultyData = [
         name: "Prof. Anatoliy Gordonov",
         area: "Real-Time Networks",
         description: "Graph Theory and Network Structure Optimization, Real Time Control Systems, and Formal Languages.",
-        image: "https://images.unsplash.com/photo-1558494949-ef526b0042a0?q=80&w=2668&auto=format&fit=crop",
+        image: "/faculty-research/graph-theory.png",
         category: "Networks",
 
     },
@@ -67,7 +67,7 @@ const facultyData = [
         name: "Prof. Natacha Gueorguieva",
         area: "Neural Networks",
         description: "Pattern Recognition, Clustering, and Brain Modeling. Simulations of Spiking Neurons and Self-Organizing Maps.",
-        image: "https://images.unsplash.com/photo-1555431128-a54d4ebb20bc?q=80&w=2670&auto=format&fit=crop",
+        image: "/faculty-research/ai.png",
         category: "AI",
         profile: 'https://www.cs.csi.cuny.edu/~natacha/'
     },
@@ -103,7 +103,7 @@ const facultyData = [
         name: "Prof. Shuqun Zhang",
         area: "Optical Computing",
         description: "Image and Video Processing, Computer Vision, Pattern Recognition, and Digital Holography.",
-        image: "https://images.unsplash.com/photo-1535378437327-b7149236addf?q=80&w=2670&auto=format&fit=crop",
+        image: "/faculty-research/image-processing.png",
         category: "Imaging",
         profile: 'https://www.cs.csi.cuny.edu/~zhangs/'
     },
@@ -140,9 +140,9 @@ const FeaturedCard = () => (
     >
         {/* Background Image */}
         <img
-            src="https://images.unsplash.com/photo-1504384308090-c54be3855463?q=80&w=2670&auto=format&fit=crop"
+            src="/csi-blue-logo.png"
             alt="Faculty Research Lab"
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            className="absolute inset-0 w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
         />
 
         {/* Gradient Overlay */}

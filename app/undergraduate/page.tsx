@@ -374,8 +374,12 @@ export default function DegreePathHero() {
                     <div id="bs-computer-science">
                         <BSComputerScienceSection />
                     </div>
-                    <SpecializationsAccordion />
-                    <CareerMilestones />
+                    <div id="specializations">
+                        <SpecializationsAccordion />
+                    </div>
+                    <div id="career-milestones">
+                        <CareerMilestones />
+                    </div>
                     <div id="additional-degrees">
                         <BSMathematicsSection />
                     </div>
@@ -385,9 +389,11 @@ export default function DegreePathHero() {
                     <div id="minors-certificates">
                         <MinorsAccordion />
                     </div>
-                    <DoubleCountingPolicy />
+                    <div id="double-counting-policy">
+                        <DoubleCountingPolicy />
+                    </div>
                     {/* Graduate with Honors Section */}
-                    <section className="py-16 bg-white">
+                    <section id="graduate-with-honors" className="py-16 bg-white">
                         <div className="max-w-4xl mx-auto px-6">
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
@@ -413,7 +419,9 @@ export default function DegreePathHero() {
                             </motion.div>
                         </div>
                     </section>
-                    <ABETAccreditation />
+                    <div id="abet-accreditation">
+                        <ABETAccreditation />
+                    </div>
 
                 </div>
             </section>

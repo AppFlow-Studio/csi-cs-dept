@@ -1,47 +1,7 @@
 import { cn } from "@/lib/utils"
 import { Marquee } from "@/components/ui/marquee"
 import { allIcons } from "./floating-icons"
-const reviews = [
-    {
-        name: "Jack",
-        username: "@jack",
-        body: "I've never seen anything like this before. It's amazing. I love it.",
-        img: "https://avatar.vercel.sh/jack",
-    },
-    {
-        name: "Jill",
-        username: "@jill",
-        body: "I don't know what to say. I'm speechless. This is amazing.",
-        img: "https://avatar.vercel.sh/jill",
-    },
-    {
-        name: "John",
-        username: "@john",
-        body: "I'm at a loss for words. This is amazing. I love it.",
-        img: "https://avatar.vercel.sh/john",
-    },
-    {
-        name: "Jane",
-        username: "@jane",
-        body: "I'm at a loss for words. This is amazing. I love it.",
-        img: "https://avatar.vercel.sh/jane",
-    },
-    {
-        name: "Jenny",
-        username: "@jenny",
-        body: "I'm at a loss for words. This is amazing. I love it.",
-        img: "https://avatar.vercel.sh/jenny",
-    },
-    {
-        name: "James",
-        username: "@james",
-        body: "I'm at a loss for words. This is amazing. I love it.",
-        img: "https://avatar.vercel.sh/james",
-    },
-]
 
-const firstRow = reviews.slice(0, reviews.length / 2)
-const secondRow = reviews.slice(reviews.length / 2)
 
 const ReviewCard = ({
     img,
@@ -79,22 +39,26 @@ const ReviewCard = ({
 }
 
 export function CompaniesMarquee() {
+    const halfLength = Math.ceil(allIcons.length / 2);
+    const firstHalf = allIcons.slice(0, halfLength);
+    const secondHalf = allIcons.slice(halfLength);
+
     return (
-        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden h-full">
-            <Marquee pauseOnHover className="[--duration:20s] grayscale w-full gap-x-10" >
+        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden h-full gap-y-4">
+            <Marquee pauseOnHover className="[--duration:20s]  w-full gap-x-10 h-20" >
                 {/* {firstRow.map((review) => (
                     <ReviewCard key={review.username} {...review} />
                 ))} */}
-                {allIcons.map((icon) => (
-                    <icon.icon key={icon.id} className=" text-foreground w-300" />
+                {firstHalf.map((icon) => (
+                    <icon.icon key={icon.id} className=" text-foreground h-20 w-20" />
                 ))}
             </Marquee>
-            <Marquee pauseOnHover reverse className="[--duration:20s] grayscale w-full gap-x-10" >
+            <Marquee pauseOnHover reverse className="[--duration:20s]  w-full gap-x-10 h-20" >
                 {/* {firstRow.map((review) => (
                     <ReviewCard key={review.username} {...review} />
                 ))} */}
-                {allIcons.map((icon) => (
-                    <icon.icon key={icon.id} className=" text-foreground w-300" />
+                {secondHalf.map((icon) => (
+                    <icon.icon key={icon.id} className=" text-foreground h-20 w-20" />
                 ))}
             </Marquee>
 

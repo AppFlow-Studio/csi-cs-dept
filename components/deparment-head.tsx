@@ -140,10 +140,6 @@ const DepartmentHeadSection = () => {
 
         </motion.div>
 
-        {/* Decorative Sidebar Elements (Mimicking the layout lines in original image) */}
-        <div className="hidden lg:block absolute left-0 top-1/2 w-8 h-[2px] bg-gray-300"></div>
-        <div className="hidden lg:block absolute right-0 top-1/2 w-8 h-[2px] bg-gray-300"></div>
-
       </div>
     </section>
   );

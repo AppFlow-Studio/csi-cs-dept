@@ -15,33 +15,33 @@ const items = [
         name: "DEGREES",
         color: "bg-[#7abde8]",
         items: [
-            { name: "AAS in Computer Technology" },
-            { name: "BS in Computer Science" },
-            { name: "Specializations", isSubItem: true },
-            { name: "Graduation with Honors", isSubItem: true },
-            { name: "Career Milestones", isSubItem: true },
-            { name: "BS in Computer Science-Mathematics" },
-            { name: "BS in Information Systems and Informatics" },
-            { name: "Computer Science Minor" },
-            { name: "Cyber Security Minor" },
-            { name: "Data Science Minor" },
-            { name: "Computational Linguistics Minor" },
+            { name: "AAS in Computer Technology", href: "/undergraduate#aas-computer-technology" },
+            { name: "BS in Computer Science", href: "/undergraduate#bs-computer-science" },
+            { name: "Specializations", href: "/undergraduate#specializations", isSubItem: true },
+            { name: "Graduation with Honors", href: "/undergraduate#graduate-with-honors", isSubItem: true },
+            { name: "Career Milestones", href: "/undergraduate#career-milestones", isSubItem: true },
+            { name: "BS in Computer Science-Mathematics", href: "/undergraduate#additional-degrees" },
+            { name: "BS in Information Systems and Informatics", href: "/undergraduate#bs-information-systems-and-informatics" },
+            { name: "Computer Science Minor", href: "/undergraduate#minors-certificates" },
+            { name: "Cyber Security Minor", href: "/undergraduate#minors-certificates" },
+            { name: "Data Science Minor", href: "/undergraduate#minors-certificates" },
+            { name: "Computational Linguistics Minor", href: "/undergraduate#minors-certificates" },
         ],
     }],
     [{
         name: "BS/MS ACCELERATED",
         color: "bg-orange-500",
         items: [
-            { name: "Double Counting Policy" },
+            { name: "Double Counting Policy", href: "/undergraduate#double-counting-policy" },
         ],
     }],
     [{
         name: "ABET ACCREDITATION",
         color: "bg-slate-700",
         items: [
-            { name: "Program Educational Objectives" },
-            { name: "Student Outcomes" },
-            { name: "BS Program Enrollment" },
+            { name: "Program Educational Objectives", href: "/undergraduate#abet-accreditation" },
+            { name: "Student Outcomes", href: "/undergraduate#abet-accreditation" },
+            { name: "BS Program Enrollment", href: "/undergraduate#abet-accreditation" },
         ],
     }]
 ];
@@ -155,7 +155,7 @@ const NotchTwo = () => {
                                             {section.items.map((item, itemIndex) => (
                                                 <li key={itemIndex}>
                                                     <a
-                                                        href="#"
+                                                        href={item.href || "#"}
                                                         className={`block py-3 px-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-white/50 rounded-lg transition-all duration-200 border-b border-gray-100 last:border-b-0 ${item.isSubItem ? "pl-6 text-gray-600" : "font-medium"
                                                             }`}
                                                     >

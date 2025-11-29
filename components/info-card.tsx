@@ -92,7 +92,7 @@ export const ContentSection = () => {
             title: "Faculty & Staff",
             badge: "Expert Mentorship",
             icon: <Users size={24} />,
-            image: "https://images.unsplash.com/photo-1544531320-98e96f667e68?q=80&w=2670&auto=format&fit=crop",
+            image: "/faculty-staff.png",
             specializations: ["Computer Science", "Computer Engineering", "Information Systems", "Cybersecurity"],
             link: "/people",
         }
@@ -100,7 +100,7 @@ export const ContentSection = () => {
 
     return (
         <section className="max-w-[1600px] mx-auto px-4 md:px-6 mb-20">
-            <div className="flex flex-col xl:flex-row gap-12">
+            <div className="flex flex-col xl:flex-row gap-12 ">
 
                 {/* Left Side Text */}
                 <div className="xl:w-1/3 pt-4">

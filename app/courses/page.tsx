@@ -277,9 +277,9 @@ function CoursesPageContent() {
     };
 
     return (
-        <div className="min-h-screen bg-slate-50/50 font-sans text-slate-900">
+        <div className="min-h-screen bg-slate-50/50 font-sans text-slate-900 ">
             {/* --- Quick Links Section --- */}
-            <section className="bg-gradient-to-br from-blue-600 via-blue-700 to-cyan-700 text-white py-12 md:py-16">
+            <section className="bg-gradient-to-br from-blue-600 via-blue-700 to-cyan-700 text-white pb-12 md:pb-16 pt-32">
                 <div className="max-w-[1600px] mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}

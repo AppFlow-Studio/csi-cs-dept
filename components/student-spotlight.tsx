@@ -163,10 +163,14 @@ const FeaturedSpotlight = ({ story }: { story: typeof spotlights[0] }) => (
 
 const SpotlightItem = ({ story, index }: { story: typeof spotlights[0], index: number }) => (
     <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: index * 0.1 }}
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -8 }}
+        transition={{
+            duration: 0.2,
+            ease: "easeOut"
+        }}
+        layout
         className="flex gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-colors cursor-pointer group border border-transparent hover:border-slate-100"
     >
         <div className="shrink-0 mt-1">
@@ -252,31 +256,10 @@ export default function StudentSpotlights() {
 
                         {/* Scrollable Container if needed, or static list */}
                         <div className="space-y-2">
-                            <AnimatePresence mode="wait">
+                            <AnimatePresence initial={false}>
                                 {displayedStories.map((story, idx) => (
                                     <SpotlightItem key={story.id} story={story} index={idx} />
                                 ))}
-                            </AnimatePresence>
-
-                            {/* Additional stories that appear when expanded */}
-                            <AnimatePresence>
-                                {showAllNews && remainingStories.length > 0 && (
-                                    <motion.div
-                                        initial={{ opacity: 0, height: 0 }}
-                                        animate={{ opacity: 1, height: 'auto' }}
-                                        exit={{ opacity: 0, height: 0 }}
-                                        transition={{}}
-                                        className="space-y-2"
-                                    >
-                                        {remainingStories.map((story, idx) => (
-                                            <SpotlightItem
-                                                key={story.id}
-                                                story={story}
-                                                index={initialStories.length + idx}
-                                            />
-                                        ))}
-                                    </motion.div>
-                                )}
                             </AnimatePresence>
                         </div>
 

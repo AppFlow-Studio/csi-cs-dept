@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { Calendar, Award, ArrowRight, FileText, Users } from 'lucide-react';
+import Image from 'next/image';
+import { allIcons } from './floating-icons';
 
 // --- Data Configuration ---
 
@@ -38,7 +40,7 @@ const newsData: Record<string, NewsItem[]> = {
             date: "July 2023",
             image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop",
             author: "Prof. Xiaowen Zhang",
-            link: "https://cybernyc.org"
+            link: "https://www.gc.cuny.edu/news/cuny-graduate-center-receives-3-million-through-google-cyber-nyc-institutional-research-program"
         },
         {
             id: "23-2",
@@ -74,7 +76,7 @@ const newsData: Record<string, NewsItem[]> = {
             date: "July 2022",
             image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2670&auto=format&fit=crop",
             author: "Prof. S. Agaian",
-            link: "https://www.ae-info.org"
+            link: "https://csitoday.com/2022/06/distinguished-professor-agaian-elected-as-member-of-academia-europaea/"
         },
         {
             id: "22-3",
@@ -101,8 +103,9 @@ const newsData: Record<string, NewsItem[]> = {
             title: "CSI Today Article: Research on COVID-19",
             category: "Research",
             date: "February 2021",
-            image: "https://images.unsplash.com/photo-1584036561566-b93241b4e16b?q=80&w=2670&auto=format&fit=crop",
-            author: "Prof. Sos Agaian"
+            image: "/cunycsicampus.png",
+            author: "Prof. Sos Agaian",
+            link: "https://csitoday.com/2021/02/distinguished-professor-agaian-leading-international-team-working-remotely-to-combat-covid-19/"
         }
     ]
 };
@@ -189,13 +192,38 @@ const NewsCard = ({ item }: { item: NewsItem }) => {
 };
 
 const LogoTicker = () => {
+    // Get Google and AWS icons from allIcons
+    const googleIconData = allIcons.find(icon => icon.id === 1);
+    const awsIconData = allIcons.find(icon => icon.id === 16);
+    const IconGoogle = googleIconData?.icon;
+    const IconAWS = awsIconData?.icon;
+
     const partners = [
-        { name: "NSF", label: "National Science Foundation" },
-        { name: "Google", label: "Google CyberNYC" },
-        { name: "CUNY", label: "City University of New York" },
-        { name: "IEEE", label: "IEEE Society" },
-        { name: "AAIA", label: "Asia-Pacific AI Association" },
-        { name: "Regeneron", label: "Regeneron STS" },
+        {
+            name: "NSF",
+            label: "National Science Foundation",
+            type: "image",
+            src: "/nsf.png"
+        },
+        {
+            name: "Google",
+            label: "Google CyberNYC",
+            type: "icon",
+            icon: IconGoogle
+        },
+        {
+            name: "Amazon",
+            label: "Amazon Web Services",
+            type: "icon",
+            icon: IconAWS
+        },
+        {
+            name: "CUNY",
+            label: "City University of New York",
+            type: "image",
+            src: "/cuny.png"
+        },
+
     ];
 
     return (
@@ -204,12 +232,36 @@ const LogoTicker = () => {
                 <p className="text-center text-gray-500 text-sm font-semibold mb-8 uppercase tracking-widest">
                     Research Partners & Sponsors
                 </p>
-                <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                <div className="flex flex-wrap justify-center gap-8 md:gap-16 items-center">
                     {partners.map((p, i) => (
-                        <div key={i} className="text-xl md:text-2xl font-bold text-gray-400 font-serif flex items-center gap-2">
-                            {/* Placeholder for logos using text/icons for this demo */}
-                            <Award size={24} />
-                            <span>{p.name}</span>
+                        <div
+                            key={i}
+                            className="flex items-center justify-center h-20 w-40 md:h-24 md:w-48 opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 group"
+                            title={p.label}
+                        >
+                            {p.type === "image" && p.src ? (
+                                <div className="relative w-full h-full">
+                                    <Image
+                                        src={p.src}
+                                        alt={p.label}
+                                        fill
+                                        className="object-contain"
+                                        sizes="(max-width: 768px) 160px, 192px"
+                                    />
+                                </div>
+                            ) : p.type === "icon" && p.icon ? (
+                                <div className="flex items-center justify-center h-20 w-20">
+                                    {React.createElement(p.icon, {
+                                        className: " text-gray-400 group-hover:text-gray-600 transition-colors",
+                                        style: { fill: 'currentColor' }
+                                    })}
+                                </div>
+                            ) : (
+                                <div className="text-xl md:text-2xl font-bold text-gray-400 font-serif flex items-center gap-2">
+                                    <Award size={24} />
+                                    <span>{p.name}</span>
+                                </div>
+                            )}
                         </div>
                     ))}
                 </div>

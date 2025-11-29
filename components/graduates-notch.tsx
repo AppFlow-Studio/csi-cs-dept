@@ -14,22 +14,22 @@ const items = [
         name: "DEGREES",
         color: "bg-[#7abde8]",
         items: [
-            { name: "Master of Science (M.S) Program" },
-            { name: "Admission Requirements", isSubItem: true },
-            { name: "Degree Requirements", isSubItem: true },
-            { name: "Specializations", isSubItem: true },
-            { name: "Double Counting Policy", isSubItem: true },
-            { name: "Ph.D. Program" },
+            { name: "Master of Science (M.S) Program", href: "/graduate#ms-computer-science" },
+            { name: "Admission Requirements", href: "/graduate#ms-computer-science", isSubItem: true },
+            { name: "Degree Requirements", href: "/graduate#ms-computer-science", isSubItem: true },
+            { name: "Specializations", href: "/graduate#specializations", isSubItem: true },
+            { name: "Double Counting Policy", href: "/graduate#double-counting-policy", isSubItem: true },
+            { name: "Ph.D. Program", href: "/graduate#phd-computer-science" },
         ],
     }],
     [{
         name: "APPLICATION",
         color: "bg-green-600",
         items: [
-            { name: "Apply to MS Online" },
-            { name: "Apply to Ph.D. Online" },
-            { name: "International Applicants" },
-            { name: "Tuition" },
+            { name: "Apply to MS Online", href: "/graduate#ms-computer-science" },
+            { name: "Apply to Ph.D. Online", href: "/graduate#phd-computer-science" },
+            { name: "International Applicants", href: "/graduate#ms-computer-science" },
+            { name: "Tuition", href: "/graduate#ms-computer-science" },
         ],
     }]
 ];
@@ -45,7 +45,7 @@ const Icons = [
     },
 ];
 
-const NotchTwo = () => {
+const GraduatesNotch = () => {
     const [isExpanded, setIsExpanded] = useState(false);
     const [selectedItem, setSelectedItem] = useState(0);
 
@@ -139,7 +139,7 @@ const NotchTwo = () => {
                                             {section.items.map((item, itemIndex) => (
                                                 <li key={itemIndex}>
                                                     <a
-                                                        href="#"
+                                                        href={item.href || "#"}
                                                         className={`block py-3 px-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-white/50 rounded-lg transition-all duration-200 border-b border-gray-100 last:border-b-0 ${item.isSubItem ? "pl-6 text-gray-600" : "font-medium"
                                                             }`}
                                                     >
@@ -180,4 +180,4 @@ const NotchTwo = () => {
     );
 };
 
-export default NotchTwo;
+export default GraduatesNotch;

@@ -31,20 +31,60 @@ import Link from 'next/link';
 
 
 const HeroSection = () => {
+  // Array of all hero images
+  const heroImages = [
+    '/home-hero/csi-home-0.jpg',
+    '/home-hero/csi-home-1.jpg',
+    '/home-hero/csi-home-2.png',
+    '/home-hero/csi-home-3.jpg',
+    '/home-hero/csi-home-4.jpg',
+    '/home-hero/csi-home-5.jpg',
+    '/home-hero/csi-home-6.jpg',
+    '/home-hero/csi-home-7.jpg',
+    '/home-hero/csi-home-8.jpg',
+    '/home-hero/csi-home-9.jpg',
+    '/home-hero/csi-home-11.jpg',
+    '/home-hero/csi-home-12.jpg',
+    '/home-hero/csi-home-13.jpg',
+    '/home-hero/csi-home-14.jpg',
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Auto-cycle through images
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 5000); // Change image every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
+
   return (
     <section className="relative w-full max-w-[1600px] mx-auto mt-6 md:px-6 mb-12 group rounded-xl">
       {/* Main Banner Background */}
-      <div className="relative w-full h-[400px] md:h-[550px] bg-linear-to-r from-blue-900 to-cyan-600 overflow-hidden md:shadow-lg rounded-xl">
+      <div className="relative w-full h-[400px] md:h-[550px] bg-linear-to-r from-[#7abde8] to-cyan-600 overflow-hidden md:shadow-lg rounded-xl">
 
-        {/* Image (Right Side) */}
         <div className="absolute right-0 top-0 h-full w-1/2 lg:w-2/3">
-          {/* Using a placeholder image that resembles a tech student/professional */}
-          <img
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop"
-            alt="Students collaborating"
-            className="w-full h-full object-cover object-center mask-image-gradient"
-            style={{ maskImage: 'linear-gradient(to left, black 50%, transparent 100%)' }}
-          />
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={currentIndex}
+              src={heroImages[currentIndex]}
+              alt="CSI Campus"
+              initial={{ opacity: 0, scale: 1.1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{
+                duration: 1.2,
+                ease: [0.4, 0, 0.2, 1]
+              }}
+              className="w-full h-full object-cover object-center mask-image-gradient"
+              style={{ maskImage: 'linear-gradient(to left, black 50%, transparent 100%)' }}
+            />
+          </AnimatePresence>
+
+          {/* Gradient overlay for smooth transition effect */}
+          <div className="absolute inset-0 bg-linear-to-l from-transparent via-transparent to-[#7abde8]/20 pointer-events-none" />
         </div>
       </div>
 
@@ -53,22 +93,43 @@ const HeroSection = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="absolute top-8 left-4 right-4 md:left-16 md:top-1/2 -translate-y-1/2 md:w-[440px] bg-white p-8 shadow-xl z-10 rounded-xl"
+        className="absolute top-8 left-4 right-4 md:left-16 md:top-1/2 -translate-y-1/2 md:w-[440px] bg-white p-8 shadow-xl z-10 rounded-xl overflow-hidden"
       >
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
-          Master tomorrow's technology today
-        </h2>
-        <p className="text-gray-600 mb-6 text-base">
-          Join a community of innovators at CSI. From AI to Cybersecurity, build the skills needed for the modern digital landscape.
-        </p>
+        <div className="relative">
+          {/* Logo Background Watermark */}
+          <div className="absolute -top-6 right-0 w-32 h-32 opacity-5 pointer-events-none">
+            <img
+              src="/csi-blue-logo.png"
+              alt="CSI Logo"
+              className="w-full h-full object-contain"
+            />
+          </div>
 
-        <div className="flex gap-4">
-          <Link href="/courses" className="bg-[#2d2f31] text-white font-bold px-6 py-3 hover:bg-black transition-colors rounded-lg">
-            View Programs
-          </Link>
-          <Link href="/resources" className="bg-white border border-black text-black font-bold px-6 py-3 hover:bg-gray-100 transition-colors rounded-lg">
-            Learn AI
-          </Link>
+          {/* Logo at Top */}
+          <div className="mb-4 flex items-center gap-3 relative z-10">
+            <img
+              src="/csi-blue-logo.png"
+              alt="CUNY College of Staten Island"
+              className="h-10 w-auto object-contain"
+            />
+            <div className="h-px flex-1 bg-linear-to-r from-[#7abde8] to-transparent"></div>
+          </div>
+
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight relative z-10">
+            Master tomorrow's technology today
+          </h2>
+          <p className="text-gray-600 mb-6 text-base relative z-10">
+            Join a community of innovators at CSI. From AI to Cybersecurity, build the skills needed for the modern digital landscape.
+          </p>
+
+          <div className="flex gap-4 relative z-10">
+            <Link href="/courses" className="bg-[#2d2f31] text-white font-bold px-6 py-3 hover:bg-black transition-colors rounded-lg">
+              View Programs
+            </Link>
+            <Link href="/resources" className="bg-white border border-black text-black font-bold px-6 py-3 hover:bg-gray-100 transition-colors rounded-lg">
+              Learn AI
+            </Link>
+          </div>
         </div>
       </motion.div>
     </section>
@@ -81,13 +142,12 @@ const HeroSection = () => {
 // --- Main Page Layout ---
 export default function CSIDepartmentPage() {
   return (
-    <div className="min-h-screen bg-white font-sans text-[#2d2f31]">
+    <div className="min-h-screen bg-white font-sans text-[#2d2f31] max-w-8xl mx-auto">
 
-      <main>
+      <main className='pt-24 '>
         <HeroSection />
         <ContentSection />
 
-        {/* Facebook Social Link Section */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -95,7 +155,7 @@ export default function CSIDepartmentPage() {
           transition={{ duration: 0.6 }}
           className="px-6"
         >
-          <div className="flex items-start justify-start">
+          <div className="flex items-start justify-start max-w-8xl mx-auto">
             <motion.a
               href="https://www.facebook.com/computerscienceatcsi/"
               target="_blank"
@@ -122,49 +182,24 @@ export default function CSIDepartmentPage() {
             </>
           }
           mainImage={{
-            src: "https://shadcnblocks.com/images/block/placeholder-1.svg",
+            src: "/csi1n.png",
             alt: "placeholder",
           }}
           secondaryImage={{
-            src: "https://shadcnblocks.com/images/block/placeholder-2.svg",
+            src: "/csi-graduation.jpg",
             alt: "placeholder",
           }}
           breakout={{
-            src: "https://shadcnblocks.com/images/block/block-1.svg",
-            alt: "logo",
-            title: "Hundreds of blocks at Shadcnblocks.com",
+            src: "/cunycsi.png",
+            alt: "CUNY College of Staten Island Logo",
+            title: "ABET-Accredited Computer Science Programs",
             description:
-              "Providing businesses with effective tools to improve workflows, boost efficiency, and encourage growth.",
-            buttonText: "Discover more",
-            buttonUrl: "https://shadcnblocks.com",
+              "Our Bachelor of Science in Computer Science is accredited by ABET, ensuring the highest standards in computer science education. Join a program that prepares you for successful careers in technology, research, and innovation.",
+            buttonText: "Explore Our Programs",
+            buttonUrl: "/undergraduate",
           }}
           companiesTitle="Our students go on to work at top companies"
-          companies={[
-            {
-              src: "https://shadcnblocks.com/images/block/logos/company/fictional-company-logo-1.svg",
-              alt: "Arc",
-            },
-            {
-              src: "https://shadcnblocks.com/images/block/logos/company/fictional-company-logo-2.svg",
-              alt: "Descript",
-            },
-            {
-              src: "https://shadcnblocks.com/images/block/logos/company/fictional-company-logo-3.svg",
-              alt: "Mercury",
-            },
-            {
-              src: "https://shadcnblocks.com/images/block/logos/company/fictional-company-logo-4.svg",
-              alt: "Ramp",
-            },
-            {
-              src: "https://shadcnblocks.com/images/block/logos/company/fictional-company-logo-5.svg",
-              alt: "Retool",
-            },
-            {
-              src: "https://shadcnblocks.com/images/block/logos/company/fictional-company-logo-6.svg",
-              alt: "Watershed",
-            }
-          ]}
+          companies={[]}
           achievementsTitle="Where Our Students Build Their Careers"
           achievementsDescription="Our graduates are highly sought after by leading technology companies, securing positions at Fortune 500 firms, innovative startups, and cutting-edge research institutions. Through rigorous academic preparation, hands-on projects, and industry partnerships, we equip our students with the skills and experience needed to excel in today's competitive tech landscape."
           achievements={
@@ -183,7 +218,6 @@ export default function CSIDepartmentPage() {
 
       <DepartmentNewsSection />
 
-      <Footer />
     </div>
   );
 }

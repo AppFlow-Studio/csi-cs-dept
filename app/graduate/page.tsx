@@ -15,6 +15,7 @@ import MSProgramSection from '@/components/ms-program-section';
 import DoubleCountingPolicy from '@/components/double-counting-policy';
 import GraduateSpecializations from '@/components/graduate-specializations';
 import PhDProgramSection from '@/components/graduate-phd';
+import GraduatesNotch from '@/components/graduates-notch';
 
 // --- Data Configuration ---
 const cardData = [
@@ -50,7 +51,8 @@ const cardData = [
 
 export default function GraduatePage() {
     return (
-        <main className='max-w-8xl '>
+        <main className='max-w-8xl pt-12 '>
+            <GraduatesNotch />
             <section className="relative min-h-[90vh] bg-white overflow-hidden flex flex-col">
 
                 {/* ------------------------------------------------------- */}
@@ -148,11 +150,11 @@ export default function GraduatePage() {
                                     </div>
 
                                     {/* Footer Link */}
-                                    <div className="relative mt-auto pt-4 border-t border-slate-50 w-full flex justify-center">
+                                    {/* <div className="relative mt-auto pt-4 border-t border-slate-50 w-full flex justify-center">
                                         <span className="text-xs font-bold text-slate-400 group-hover:text-[#7abde8] uppercase tracking-widest flex items-center gap-2 transition-colors">
                                             Explore <ArrowRight size={14} />
                                         </span>
-                                    </div>
+                                    </div> */}
                                 </motion.div>
                             ))}
 
@@ -166,9 +168,13 @@ export default function GraduatePage() {
             <div id="ms-computer-science">
                 <MSProgramSection />
             </div>
-            <GraduateSpecializations />
+            <div id="specializations">
+                <GraduateSpecializations />
+            </div>
 
-            <DoubleCountingPolicy />
+            <div id="double-counting-policy">
+                <DoubleCountingPolicy />
+            </div>
             <div id="phd-computer-science">
                 <PhDProgramSection />
             </div>

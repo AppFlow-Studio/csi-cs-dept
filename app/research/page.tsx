@@ -18,6 +18,7 @@ import {
 import Image from 'next/image';
 import FacultyResearch from '@/components/faculty-lead-research';
 import StudentResearch from '@/components/student-lead-research';
+import Link from 'next/link';
 // --- Real CSI Research Data ---
 const researchProjects = [
     {
@@ -28,7 +29,7 @@ const researchProjects = [
         professor: "Prof. Feng Gu",
         tags: ["Cybersecurity", "AI"],
         icon: ShieldCheck,
-        link: "https://csi.cuny.edu"
+        link: "https://www.sciencedirect.com/science/article/abs/pii/S0957417419303008"
     },
     {
         id: 'p2',
@@ -38,7 +39,7 @@ const researchProjects = [
         professor: "Prof. Louis Petingi",
         tags: ["Bioinformatics", "Graph Theory"],
         icon: Network,
-        link: "#"
+        link: "https://arxiv.org/abs/2109.03236"
     },
     {
         id: 'p3',
@@ -48,7 +49,7 @@ const researchProjects = [
         professor: "Prof. Sos Agaian",
         tags: ["Computer Vision", "AI"],
         icon: Activity,
-        link: "#"
+        link: "https://www.spiedigitallibrary.org/conference-proceedings-of-spie/13033/130330K/An-impact-study-of-deep-learning-based-low-light-image/10.1117/12.3014452.short"
     },
     {
         id: 'p4',
@@ -58,7 +59,7 @@ const researchProjects = [
         professor: "Prof. Shuqun Zhang",
         tags: ["Optical Computing", "HPC"],
         icon: Cpu,
-        link: "#"
+        link: "https://www.spiedigitallibrary.org/conference-proceedings-of-spie/9217/921723/Real-time-soft-partition-based-weighted-sum-filtering-with-GPU/10.1117/12.2062478.short"
     },
     {
         id: 'p5',
@@ -68,7 +69,7 @@ const researchProjects = [
         professor: "Prof. Xiaowen Zhang",
         tags: ["Cryptography", "HPC"],
         icon: ShieldCheck,
-        link: "#"
+        link: "https://ieeexplore.ieee.org/document/8001961"
     },
     {
         id: 'p6',
@@ -78,7 +79,7 @@ const researchProjects = [
         professor: "Prof. Feng Gu",
         tags: ["Simulation", "Data Science"],
         icon: FileText,
-        link: "#"
+        link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=RZ7Z6GMAAAAJ&citation_for_view=RZ7Z6GMAAAAJ:u5HHmVD_uO8C"
     },
     {
         id: 'p7',
@@ -88,7 +89,7 @@ const researchProjects = [
         professor: "Prof. Xiaowen Zhang",
         tags: ["Security", "Distributed Sys"],
         icon: Network,
-        link: "#"
+        link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=vX1p5wIAAAAJ&citation_for_view=vX1p5wIAAAAJ:ufrVoPGSRksC"
     },
     {
         id: 'p8',
@@ -98,7 +99,7 @@ const researchProjects = [
         professor: "Prof. Natacha Gueorguieva",
         tags: ["Neural Networks", "Modeling"],
         icon: Activity,
-        link: "#"
+        link: "https://asmedigitalcollection.asme.org/ebooks/book/145/chapter-abstract/28872/Simulation-of-Synaptic-Responses-in-an-Active?redirectedFrom=PDF"
     }
 ];
 
@@ -196,8 +197,8 @@ export default function ResearchHero() {
                 </div>
 
             </section>
-            <FacultyResearch />
-            <StudentResearch />
+            <div className='' id='faculty-research'><FacultyResearch /></div>
+            <div className='' id='student-research'><StudentResearch /></div>
         </main>
     );
 }
@@ -205,56 +206,58 @@ export default function ResearchHero() {
 // --- Sub-Component: The Research Article Card ---
 const ResearchCard = ({ project }: { project: typeof researchProjects[0] }) => {
     return (
-        <motion.div
-            layout
-            initial={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
-            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            exit={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            whileHover={{ scale: 1.05, zIndex: 50, transition: { duration: 0.2 } }}
-            className="bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-md border border-slate-100 hover:shadow-xl hover:border-blue-200 transition-all cursor-pointer group flex flex-col h-auto min-h-[180px]"
-        >
-            {/* Header: Icon & Tag */}
-            <div className="flex justify-between items-start mb-2">
-                <div className="p-1.5 bg-blue-50 text-[#7abde8] rounded-lg">
-                    <project.icon size={16} />
-                </div>
-                <span className="text-[9px] font-bold uppercase tracking-wider bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full">
-                    {project.tags[0]}
-                </span>
-            </div>
-
-            {/* Content */}
-            <h3 className="text-sm font-bold text-slate-900 leading-snug mb-1.5 line-clamp-2 group-hover:text-blue-700 transition-colors">
-                {project.title}
-            </h3>
-
-            <div className="relative mb-3">
-                <p className="text-[11px] text-slate-500 leading-snug line-clamp-3">
-                    {project.abstract}
-                </p>
-            </div>
-
-            {/* Footer: Metadata */}
-            <div className="mt-auto pt-2 border-t border-slate-50 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                    <div className="w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center text-[#7abde8] shrink-0">
-                        <User size={10} />
+        <Link href={project.link} target='_blank' rel='noopener noreferrer'>
+            <motion.div
+                layout
+                initial={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
+                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                exit={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                whileHover={{ scale: 1.05, zIndex: 50, transition: { duration: 0.2 } }}
+                className="bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-md border border-slate-100 hover:shadow-xl hover:border-blue-200 transition-all cursor-pointer group flex flex-col h-auto min-h-[180px]"
+            >
+                {/* Header: Icon & Tag */}
+                <div className="flex justify-between items-start mb-2">
+                    <div className="p-1.5 bg-blue-50 text-[#7abde8] rounded-lg">
+                        <project.icon size={16} />
                     </div>
-                    <div className="flex flex-col">
-                        <span className="text-[10px] font-semibold text-slate-700 leading-none">{project.professor}</span>
-                        <span className="text-[9px] text-slate-400 italic leading-none mt-0.5">Professor</span>
-                    </div>
+                    <span className="text-[9px] font-bold uppercase tracking-wider bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full">
+                        {project.tags[0]}
+                    </span>
                 </div>
 
-                <a
-                    href={project.link}
-                    className="p-1.5 rounded-full bg-slate-50 text-slate-400 hover:bg-[#7abde8] hover:text-white transition-all"
-                    title="View Article"
-                >
-                    <ExternalLink size={12} />
-                </a>
-            </div>
-        </motion.div>
+                {/* Content */}
+                <h3 className="text-sm font-bold text-slate-900 leading-snug mb-1.5 line-clamp-2 group-hover:text-blue-700 transition-colors">
+                    {project.title}
+                </h3>
+
+                <div className="relative mb-3">
+                    <p className="text-[11px] text-slate-500 leading-snug line-clamp-3">
+                        {project.abstract}
+                    </p>
+                </div>
+
+                {/* Footer: Metadata */}
+                <div className="mt-auto pt-2 border-t border-slate-50 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                        <div className="w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center text-[#7abde8] shrink-0">
+                            <User size={10} />
+                        </div>
+                        <div className="flex flex-col">
+                            <span className="text-[10px] font-semibold text-slate-700 leading-none">{project.professor}</span>
+                            <span className="text-[9px] text-slate-400 italic leading-none mt-0.5">Professor</span>
+                        </div>
+                    </div>
+
+                    <a
+                        href={project.link}
+                        className="p-1.5 rounded-full bg-slate-50 text-slate-400 hover:bg-[#7abde8] hover:text-white transition-all"
+                        title="View Article"
+                    >
+                        <ExternalLink size={12} />
+                    </a>
+                </div>
+            </motion.div>
+        </Link>
     );
 };
