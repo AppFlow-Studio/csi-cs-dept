@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  // metadataBase: new URL('https://www.cs.csi.cuny.edu'),
+  metadataBase: new URL('https://csi-cs-dept.vercel.app'),
   title: {
     default: "Computer Science Department | CUNY College of Staten Island",
     template: "%s | CSI Computer Science"
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    // url: "https://www.cs.csi.cuny.edu",
+    url: "https://csi-cs-dept.vercel.app",
     siteName: "CSI Computer Science Department",
     title: "Computer Science Department | CUNY College of Staten Island",
     description: "Explore undergraduate and graduate programs in Computer Science at CUNY College of Staten Island. ABET-accredited programs, cutting-edge research, and career-focused education.",
@@ -93,9 +93,9 @@ export const metadata: Metadata = {
       { url: "/csi-blue-logo.png", sizes: "180x180", type: "image/png" },
     ],
   },
-  // alternates: {
-  //   canonical: "https://www.cs.csi.cuny.edu",
-  // },
+  alternates: {
+    canonical: "https://csi-cs-dept.vercel.app",
+  },
   category: "Education",
 };
 
