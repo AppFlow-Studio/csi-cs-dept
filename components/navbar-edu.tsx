@@ -6,6 +6,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Menu, X, ArrowRight, ChevronRight, GraduationCap } from "lucide-react";
 import { usePathname } from "next/navigation";
+import TopBanner from "./top-banner";
 
 // --- Data Configuration ---
 const navItems = [
@@ -233,6 +234,8 @@ export default function NavbarEdu() {
                             </span>
                         </div>
                     </Link>
+
+                    <TopBanner />
 
                     {/* Right Actions */}
                     <div className="flex items-center gap-4 z-50 relative">

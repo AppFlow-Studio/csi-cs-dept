@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/csi-blue-logo.png",
-     
+
         alt: "CUNY College of Staten Island - Computer Science Department",
       },
     ],

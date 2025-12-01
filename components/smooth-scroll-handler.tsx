@@ -1,11 +1,10 @@
 'use client';
 
 import { useEffect } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 export default function SmoothScrollHandler() {
     const pathname = usePathname();
-    const searchParams = useSearchParams();
 
     useEffect(() => {
         // Handle hash navigation with smooth scrolling
@@ -15,7 +14,7 @@ export default function SmoothScrollHandler() {
                 // Remove the hash symbol
                 const id = hash.substring(1);
                 const element = document.getElementById(id);
-                
+
                 if (element) {
                     // Small delay to ensure page is rendered
                     setTimeout(() => {
@@ -28,7 +27,7 @@ export default function SmoothScrollHandler() {
             }
         };
 
-        // Run on mount and when pathname/searchParams change
+        // Run on mount and when pathname changes
         handleHashScroll();
 
         // Also listen for hash changes
@@ -37,7 +36,7 @@ export default function SmoothScrollHandler() {
         return () => {
             window.removeEventListener('hashchange', handleHashScroll);
         };
-    }, [pathname, searchParams]);
+    }, [pathname]);
 
     return null;
 }

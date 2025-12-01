@@ -5,9 +5,19 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    domains: [
-      "api.microlink.io", // Microlink Image Preview
-      "images.unsplash.com", // Unsplash Images
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "api.microlink.io", // Microlink Image Preview
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com", // Unsplash Images
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };
